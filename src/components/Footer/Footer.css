@@ -1,0 +1,43 @@
+#image_432968465 {
+    width: 48%;
+}
+
+#text-2914060950 {
+  color: rgb(255,255,255);
+}
+#text-2914060950 > * {
+  color: rgb(255,255,255);
+}
+
+#text-3789645461 {
+  line-height: 2.65;
+  text-align: left;
+  color: rgb(255,255,255);
+}
+#text-3789645461 > * {
+  color: rgb(255,255,255);
+}
+
+#text-4233017610 {
+  font-size: 0.8rem;
+  color: rgb(255,255,255);
+}
+#text-4233017610 > * {
+  color: rgb(255,255,255);
+}
+
+
+#section_970361642 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #284386;
+}
+#section_970361642 .ux-shape-divider--top svg {
+  height: 150px;
+  --divider-top-width: 100%;
+}
+#section_970361642 .ux-shape-divider--bottom svg {
+  height: 150px;
+  --divider-width: 100%;
+}
+
