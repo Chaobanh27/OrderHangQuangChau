@@ -1,42 +1,127 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+a[href^=tel] {
+color : inherit;
+text-decoration: none;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.zalo-container img {
+max-width: 100%;
+height: auto;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.zalo-container {
+position: fixed;
+width: 40px;
+height: 40px;
+bottom: 160px;
+z-index: 9999999;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.zalo-container:not(.right) {
+left: 2.5rem;
 }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.zalo-container.right {
+right: 2.5rem;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.zalo-container a {
+display: block;
 }
-
-.card {
-  padding: 2em;
+.zalo-container span {
+display: -webkit-flex;
+display: -moz-flex;
+display: -ms-flex;
+display: -o-flex;
+display: flex;
+-ms-align-items: center;
+align-items: center;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background: #1182fc;
+position: relative;
 }
-
-.read-the-docs {
-  color: #888;
+@keyframes zoomIn_zalo {
+from {
+opacity: 0;
+transform: scale3d(0.3, 0.3, 0.3);
+}
+50% {
+opacity: 1;
+}
+}
+.zoomIn_zalo {
+animation-name: zoomIn_zalo;
+}
+.animated_zalo {
+animation-duration: 1s;
+animation-fill-mode: both;
+}
+.animated_zalo.infinite {
+animation-iteration-count: infinite;
+}
+.cmoz-alo-circle {
+width: 50px;
+height: 50px;
+top: -5px;
+right: -5px;
+position: absolute;
+background-color: transparent;
+-webkit-border-radius: 100%;
+-moz-border-radius: 100%;
+border-radius: 100%;
+border: 2px solid rgba(17, 130, 252, 0.8);
+opacity: 0.1;
+border-color: #1182fc;
+opacity: 0.5;
+}
+.cmoz-alo-circle-fill {
+width: 60px;
+height: 60px;
+top: -10px;
+position: absolute;
+-webkit-transition: all 0.2s ease-in-out;
+-moz-transition: all 0.2s ease-in-out;
+-ms-transition: all 0.2s ease-in-out;
+-o-transition: all 0.2s ease-in-out;
+transition: all 0.2s ease-in-out;
+-webkit-border-radius: 100%;
+-moz-border-radius: 100%;
+border-radius: 100%;
+border: 2px solid transparent;
+-webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+background-color: rgba(17, 130, 252, 0.45);
+opacity: 0.75;
+right: -10px;
+}
+@-webkit-keyframes pulse_zalo {
+from {
+-webkit-transform: scale3d(1, 1, 1);
+transform: scale3d(1, 1, 1);
+}
+50% {
+-webkit-transform: scale3d(1.05, 1.05, 1.05);
+transform: scale3d(1.05, 1.05, 1.05);
+}
+to {
+-webkit-transform: scale3d(1, 1, 1);
+transform: scale3d(1, 1, 1);
+}
+}
+@keyframes pulse_zalo {
+from {
+-webkit-transform: scale3d(1, 1, 1);
+transform: scale3d(1, 1, 1);
+}
+50% {
+-webkit-transform: scale3d(1.05, 1.05, 1.05);
+transform: scale3d(1.05, 1.05, 1.05);
+}
+to {
+-webkit-transform: scale3d(1, 1, 1);
+transform: scale3d(1, 1, 1);
+}
+}
+.pulse_zalo {
+-webkit-animation-name: pulse_zalo;
+animation-name: pulse_zalo;
 }
