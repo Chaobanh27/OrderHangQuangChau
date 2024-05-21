@@ -29,6 +29,15 @@ import NotFound from '../pages/Dashboard/NotFound/NotFound'
 import DeliveryNote from '../pages/Dashboard/StoreVN/DeliveryNote/DeliveryNote'
 import ListComplains from '../pages/Dashboard/Complain/ListComplains/ListComplains'
 import ProtectedRoute from './ProtectedRoute'
+import HomePage from "../pages/Home/HomePage/HomePage";
+import PolicyPage from "../pages/Home/PolicyPage";
+import InstructionPage from "../pages/Home/Instruction";
+import PriceList from "../pages/Home/PriceList";
+import PriceListCon from "../pages/Home/PriceListC";
+import ServiceAlipay from "../pages/Home/ServiceAlipay";
+import TrackingPage from "../pages/Home/TrackingPage";
+import NewPage from "../pages/Home/NewPage";
+
 
 const router = createBrowserRouter([
   {
