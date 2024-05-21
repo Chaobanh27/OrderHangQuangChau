@@ -1,0 +1,16 @@
+.container-width,
+.full-width .ubermenu-nav,
+.container,
+.row {
+    max-width: 1150px !important;
+}
+
+.header-main {
+    background: #4153b2 !important;
+}
+.header .has-sticky .sticky-jump.show{
+    height: 100px ;
+}
+.customHoverPreview:hover .slider .flickity-prev-next-button{
+    opacity: 1;
+}
