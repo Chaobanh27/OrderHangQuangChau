@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import { FaTachometerAlt, FaSignInAlt, FaUserPlus, FaHospital, FaCreditCard, FaStar } from 'react-icons/fa'
+
 
 const ExtraHeader = () => {
   return (
@@ -65,30 +67,36 @@ const ExtraHeader = () => {
             <div id="navbar" className="navbar-collapse collapse" aria-expanded="false">
               <ul className="nav navbar-nav">
 
-                <li className="dropdown">
-                  <i className="fa fa-tachometer" aria-hidden="true"></i>
+                <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
+                  {/* <i className="fa fa-tachometer" aria-hidden="true"></i> */}
+                  <FaTachometerAlt style={{ color: 'white', fontSize: '20px', marginRight: '5px' }}/>
                   <Link to='general-board' >Bảng tin</Link>
                 </li>
-                <li>
-                  <i className="fa fa-sign-in" aria-hidden="true"></i>
+                <li style={{ display: 'flex', alignItems: 'center' }}>
+                  {/* <i className="fa fa-sign-in" aria-hidden="true"></i> */}
+                  <FaSignInAlt style={{ color: 'white', fontSize: '20px', marginRight: '5px' }} />
                   <Link to='login' >Đăng nhập</Link>
                 </li>
-                <li>
-                  <i className="fa fa-user-plus" aria-hidden="true"></i>
+                <li style={{ display: 'flex', alignItems: 'center' }}>
+                  {/* <i className="fa fa-user-plus" aria-hidden="true"></i> */}
+                  <FaUserPlus style={{ color: 'white', fontSize: '20px', marginRight: '5px' }}/>
                   <Link to='register' >Đăng ký</Link>
                 </li>
 
-                <li className="dropdown">
-                  <i className="fa fa-hospital-o"></i>
+                <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
+                  {/* <i className="fa fa-hospital-o"></i> */}
+                  <FaHospital style={{ color: 'white', fontSize: '20px', marginRight: '5px' }}/>
                   <a target="_blank" rel="noreferrer" href="http://orderhangquangchau.com/order-hang-taobao-gia-re/">Bảng giá</a>
                 </li>
 
-                <li className="dropdown">
-                  <i className="fa fa-credit-card"></i>
+                <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
+                  {/* <i className="fa fa-credit-card"></i> */}
+                  <FaCreditCard style={{ color: 'white', fontSize: '20px', marginRight: '5px' }}/>
                   <a target="_blank" rel="noreferrer" href="http://orderhangquangchau.com/dat-hang-taobao.html">Thông tin thanh toán</a>
                 </li>
-                <li className="dropdown">
-                  <i className="fa fa-star"></i>
+                <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
+                  {/* <i className="fa fa-star"></i> */}
+                  <FaStar style={{ color: 'white', fontSize: '20px', marginRight: '5px' }}/>
                   <Link to='shop' >Shop uy tín</Link>
                 </li>
 

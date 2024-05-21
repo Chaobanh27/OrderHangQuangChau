@@ -1,7 +1,9 @@
+import CustomerSupport from '../../../../components/CustomerSupport/CustomerSupport'
 
 const ListComplains = () => {
   return (
     <>
+      <CustomerSupport/>
       <div className="wrapper">
         <div className="site_container">
 

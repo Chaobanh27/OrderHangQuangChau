@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 
+import { Link } from 'react-router-dom'
+import { MdOutlineDone } from 'react-icons/md'
 
 const RegisterForm = () => {
   return (
@@ -49,7 +51,8 @@ const RegisterForm = () => {
               </div>
               <div className="form-group pull-right">
                 <div className="tml-action-links">
-                  <a href="https://my.orderhangquangchau.com/login" rel="nofollow">Đăng nhập</a> <span style= {{ marginLeft: '5px' }}>nếu bạn đã có tài khoản</span>
+                  <Link to='/dashboard/login'>Đăng nhập</Link>
+                  <span style= {{ marginLeft: '5px' }}>nếu bạn đã có tài khoản</span>
                 </div>
               </div>
             </div>
@@ -69,19 +72,19 @@ const RegisterForm = () => {
         <div className="introduce">
           <h4 className="uppercase">Tại sao bạn lựa chọn chúng tôi:</h4>
           <p className="text-success">
-            <span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Giao dịch an toàn bảo mật tuyệt đối.
+            <span><MdOutlineDone /></span> Giao dịch an toàn bảo mật tuyệt đối.
           </p>
           <p className="text-success">
-            <span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Vận chuyển nhanh toàn quốc, giá tốt nhất.
+            <span><MdOutlineDone /></span> Vận chuyển nhanh toàn quốc, giá tốt nhất.
           </p>
           <p className="text-success">
-            <span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Phong cách phục vụ chuyên nghiệp, tư vấn nhiệt tình, chu đáo.
+            <span><MdOutlineDone /></span> Phong cách phục vụ chuyên nghiệp, tư vấn nhiệt tình, chu đáo.
           </p>
           <p className="text-success">
-            <span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Không vì lợi ích bán hàng mà bỏ qua lợi ích khách hàng.
+            <span><MdOutlineDone /></span> Không vì lợi ích bán hàng mà bỏ qua lợi ích khách hàng.
           </p>
           <p className="text-success">
-            <span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Giải quyết mọi khúc mắc, khiếu nại nhanh chóng.
+            <span><MdOutlineDone /></span> Giải quyết mọi khúc mắc, khiếu nại nhanh chóng.
           </p>
         </div>
       </div>

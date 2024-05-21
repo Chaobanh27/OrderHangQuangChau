@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 
+import { Link } from 'react-router-dom'
+
 const LoginForm = () => {
   return (
 
@@ -19,7 +21,7 @@ const LoginForm = () => {
                                     Đăng ký thành viên mới chỉ trong vòng 1 phút để có thể đặt hàng.
                     </p>
                     <div className="button">
-                      <a href="https://my.orderhangquangchau.com/register" className="btn btn-success">Đăng ký tài khoản</a>
+                      <Link className="btn btn-success" to='/dashboard/register'>Đăng ký tài khoản</Link>
                       {' '}
                       <a className="btn btn-danger" href="https://my.orderhangquangchau.com/resetpass">Khôi phục tài khoản</a>
                     </div>

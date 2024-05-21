@@ -22,6 +22,10 @@ import ListShipIds from '../pages/Dashboard/ShipOrders/ListShipIds/ListShipIds'
 import Ship from '../pages/Dashboard/Ship/Ship'
 import Trasnport from '../pages/Dashboard/Ship/Trasnport/Trasnport'
 import Finship from '../pages/Dashboard/Ship/Finship/Finship'
+import Cart from '../pages/Dashboard/Cart/Cart'
+import ShipOrder from '../pages/Dashboard/ShipOrders/ShipOrder/ShipOrder'
+import ResetPassword from '../pages/Dashboard/Auth/ResetPassword'
+import NotFound from '../pages/Dashboard/NotFound/NotFound'
 
 
 const router = createBrowserRouter([
@@ -48,6 +52,10 @@ const router = createBrowserRouter([
           {
             path: 'register',
             element: <RegisterForm/>
+          },
+          {
+            path: 'reset-password',
+            element: <ResetPassword/>
           },
           {
             path: 'general-board',
@@ -110,6 +118,10 @@ const router = createBrowserRouter([
             element: <ShipOrders/>,
             children: [
               {
+                path: '',
+                element: <ShipOrder/>
+              },
+              {
                 path: 'list-ship-orders',
                 element: <ListShipOrders/>
               },
@@ -132,6 +144,14 @@ const router = createBrowserRouter([
                 element: <Finship/>
               }
             ]
+          },
+          {
+            path: 'cart',
+            element: <Cart/>
+          },
+          {
+            path: '*',
+            element: <NotFound/>
           }
         ]
       }
