@@ -36,8 +36,43 @@ const router = createBrowserRouter([
     element: <App/>,
     children: [
       {
-        path: '',
-        element: <Home/>
+        path: "",
+        element: <Home />,
+        children: [
+          {
+            path: "/",
+            element: <HomePage />,
+          },
+
+          {
+            path: "/bang-gia",
+            element: <PriceList />,
+          },
+          {
+            path: "/category/tin-tuc",
+            element: <NewPage />,
+          },
+          {
+            path: "/bang-gia-ky-gui-hang",
+            element: <PriceListCon />,
+          },
+          {
+            path: "/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung",
+            element: <ServiceAlipay />,
+          },
+          {
+            path: "/chinh-sach-bao-mat",
+            element: <PolicyPage />,
+          },
+          {
+            path: "/huong-dan-mua-hang-tren-taobao-1688",
+            element: <InstructionPage />,
+          },
+          {
+            path: "/tracking",
+            element: <TrackingPage />,
+          },
+        ],
       },
       {
         path: 'dashboard',
