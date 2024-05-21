@@ -88,12 +88,17 @@ const router = createBrowserRouter([
         element: <Dashboard/>,
         children: [
           {
-            path: '',
-            element: <LoginForm/>
+            path: "/",
+            element: <HomePage />,
+          },
+
+          {
+            path: "/bang-gia",
+            element: <PriceList />,
           },
           {
-            path: 'login',
-            element: <LoginForm/>
+            path: "/category/tin-tuc",
+            element: <NewPage />,
           },
           {
             path: 'register',
@@ -222,3 +227,4 @@ const router = createBrowserRouter([
 export default router
 
 
+export default router;
