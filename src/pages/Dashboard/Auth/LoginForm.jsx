@@ -1,11 +1,36 @@
 /* eslint-disable react/no-unknown-property */
-
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import {
+  EMAIL_RULE,
+  PASSWORD_RULE,
+  FIELD_REQUIRED_MESSAGE,
+  PASSWORD_RULE_MESSAGE,
+  EMAIL_RULE_MESSAGE
+} from '../../../utils/validators'
+import FieldErrorAlert from '../../../components/Form/FieldErrorAlert'
+import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { loginUserAPI } from '../../../redux/user/userSlice'
 
 const LoginForm = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const submitLogIn = (data) => {
+    const { email, password } = data
+
+    toast.promise(
+      dispatch(loginUserAPI({ email, password })),
+      { pending: 'Logging in...' }
+    ).then(res => {
+      if (!res.error) navigate('/dashboard/member/profile')
+    })
+  }
+
+
   return (
-
-
     <div id="content" className="container">
       <main className="main" role="main">
         <div className="row main-row">
@@ -23,7 +48,7 @@ const LoginForm = () => {
                     <div className="button">
                       <Link className="btn btn-success" to='/dashboard/register'>Đăng ký tài khoản</Link>
                       {' '}
-                      <a className="btn btn-danger" href="https://my.orderhangquangchau.com/resetpass">Khôi phục tài khoản</a>
+                      {/* <a className="btn btn-danger" href="https://my.orderhangquangchau.com/resetpass">Khôi phục tài khoản</a> */}
                     </div>
 
                   </div>
@@ -31,18 +56,45 @@ const LoginForm = () => {
                 <div className="col-sm-6">
                   <div className="item_2">
                     <h3 className="title">
-                                    Bạn đã có tài khoản
+                          Bạn đã có tài khoản
                     </h3>
-                    <p style= {{ color: 'red' }}>Notice: Nếu không thể đăng nhập hệ thống, Nhấn khôi phục tài khoản để lấy lại thông tin<br/>hoặc Liện hệ với chúng tôi để nhận mật khẩu mới</p>
-                    <form action="" method="post" className="form_dangnhap">
+                    <p style= {{ color: 'red' }}>
+                      Notice: Nếu không thể đăng nhập hệ thống, Nhấn khôi phục tài khoản để lấy lại thông tin<br/>hoặc Liện hệ với chúng tôi để nhận mật khẩu mới
+                    </p>
+
+
+                    <form className="form_dangnhap" onSubmit={handleSubmit(submitLogIn)}>
                       <div className="form-group"><label htmlFor="username">Tài khoản Hoặc Email</label>
-                        <input type="text" name="username" value="" className="form-control" fdprocessedid="9awy6r" />
+                        <input type="text" name="username" className="form-control" fdprocessedid="9awy6r"
+                          error={!!errors['email']}
+                          {...register('email', {
+                            required: FIELD_REQUIRED_MESSAGE,
+                            pattern: {
+                              value: EMAIL_RULE,
+                              message: EMAIL_RULE_MESSAGE
+                            }
+                          })}
+                        />
+                        <FieldErrorAlert errors={errors} fieldName={'email'} />
                       </div>
+
                       <div className="form-group"><label htmlFor="password">Mật khẩu</label>
-                        <input type="password" name="password" value="" className="form-control" fdprocessedid="lxsmtq" />
+                        <input type="password" name="password" className="form-control" fdprocessedid="lxsmtq"
+                          error={!!errors['password']}
+                          {...register('password', {
+                            required: FIELD_REQUIRED_MESSAGE,
+                            pattern: {
+                              value: PASSWORD_RULE,
+                              message: PASSWORD_RULE_MESSAGE
+                            }
+                          })}
+                        />
+                        <FieldErrorAlert errors={errors} fieldName={'password'} />
                       </div>
                       <input type="submit" className="btn btn-danger" name="login" value="Đăng nhập" fdprocessedid="dx2u06" />
                     </form>
+
+
                   </div>
                 </div>
               </div>

@@ -21,7 +21,7 @@ const DeliveryNote = () => {
                 <form>
                   <div className="top-order form-group clearfix">
                     <ul className="lp-header list-inline">
-                      <div style="clear:both;" className="row">
+                      <div style= {{ clear:'both' }} className="row">
                         <li className="col-md-3 col-xs-12">
                           <div className="form-group">
                             <input type="text" className="form-control" number-only="" name="filter_dl_id" placeholder="Mã phiếu" value="" fdprocessedid="veabls" />
@@ -41,7 +41,7 @@ const DeliveryNote = () => {
                           </div>
                         </li>
                       </div>
-                      <div style="clear:both;" className="row">
+                      <div style= {{ clear:'both' }} className="row">
                         <li className="col-md-3 col-xs-12">
                           <div className="form-group">
                             <div className="input-group date">

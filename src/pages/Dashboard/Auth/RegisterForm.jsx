@@ -1,9 +1,34 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unknown-property */
 
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MdOutlineDone } from 'react-icons/md'
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
+import {
+  EMAIL_RULE,
+  PASSWORD_RULE,
+  FIELD_REQUIRED_MESSAGE,
+  PASSWORD_RULE_MESSAGE,
+  EMAIL_RULE_MESSAGE
+} from '../../../utils/validators'
+import FieldErrorAlert from '../../../components/Form/FieldErrorAlert'
+import { registerUserAPI } from '../../../common'
 
 const RegisterForm = () => {
+  const { register, handleSubmit, formState: { errors }, watch } = useForm()
+  const navigate = useNavigate()
+
+  const submitRegister = (data) => {
+    console.log('submit register: ', data)
+    const { email, password, phoneNumber, deliveryAddress } = data
+    toast.promise(
+      registerUserAPI({ email, password, phoneNumber, deliveryAddress }),
+      { pending: 'Registration is in progress...' }
+    ).then(() => {
+      navigate('/dashboard/login')
+    })
+  }
   return (
 
     <>
@@ -13,39 +38,83 @@ const RegisterForm = () => {
         </div>
 
         <div className="dangkytaikhoan">
-          <form className="form-horizontal" action="https://my.orderhangquangchau.com/register" method="post" role="form">
+          <form onSubmit={handleSubmit(submitRegister)} className="form-horizontal" >
             <div className="full">
+
+              {/* email */}
               <div className="form-group">
-
-                <input type="text" className="form-control" name="email" placeholder="Email" value="" required="" fdprocessedid="omw47m"/>
-
+                <input type="text" className="form-control" name="email" placeholder="Email" required="" fdprocessedid="omw47m"
+                  error={!!errors['email']}
+                  {...register('email', {
+                    required: FIELD_REQUIRED_MESSAGE,
+                    pattern: {
+                      value: EMAIL_RULE,
+                      message: EMAIL_RULE_MESSAGE
+                    }
+                  })}
+                />
+                <FieldErrorAlert errors={errors} fieldName={'email'} />
               </div>
+
+              {/* dpassword */}
               <div className="form-group">
-
-                <input type="password" className="form-control" name="password" placeholder="Mật khẩu" value="" required="" fdprocessedid="e13kk7"/>
-
+                <input type="password" className="form-control" name="password" placeholder="Mật khẩu" required="" fdprocessedid="e13kk7"
+                  error={!!errors['password']}
+                  {...register('password', {
+                    required: FIELD_REQUIRED_MESSAGE,
+                    pattern: {
+                      value: PASSWORD_RULE,
+                      message: PASSWORD_RULE_MESSAGE
+                    }
+                  })}
+                />
+                <FieldErrorAlert errors={errors} fieldName={'password'} />
               </div>
+
+
+              {/* password_confirmation */}
               <div className="form-group">
-
-                <input type="password" className="form-control" name="passconf" placeholder="Nhập lại mật khẩu" value="" required="" fdprocessedid="m6w2j"/>
-
+                <input type="password" className="form-control" name="passconf" placeholder="Nhập lại mật khẩu" required="" fdprocessedid="m6w2j"
+                  error={!!errors['password_confirmation']}
+                  {...register('password_confirmation', {
+                    validate: (value) => {
+                      if (value === watch('password')) return true
+                      return 'Password Confirmation does not match!'
+                    }
+                  })}
+                />
+                <FieldErrorAlert errors={errors} fieldName={'password_confirmation'} />
               </div>
+
+              {/* deliveryAddress */}
               <div className="form-group">
-
-                <input type="text" className="form-control" name="phone" placeholder="Số điện thoại" value="" required="" fdprocessedid="s2w6is"/>
-
+                <input type="text" className="form-control" name="phone" placeholder="Số điện thoại" required="" fdprocessedid="s2w6is"
+                  error={!!errors['phoneNumber']}
+                  {...register('phoneNumber', {
+                    required: FIELD_REQUIRED_MESSAGE
+                  })}
+                />
+                <FieldErrorAlert errors={errors} fieldName={'phoneNumber'} />
               </div>
-              <div className="form-group">
 
-                <select name="store" className="form-control" required="" onchange="loadSubStore(this.value)" fdprocessedid="zddyf">
+              {/* deliveryAddress */}
+              <div className="form-group">
+                <select name="store" className="form-control" required="" fdprocessedid="zddyf"
+                  error={!!errors['deliveryAddress']}
+                  {...register('deliveryAddress', {
+                    required: FIELD_REQUIRED_MESSAGE
+                  })}
+                >
                   <option value="">Địa đểm nhận hàng</option>
                   <option value="0">Hà Nội</option>
                   <option value="2">Đà Nẵng</option>
                   <option value="1">Sài Gòn</option>
                   <option value="3">Quảng Nam</option>
                 </select>
-
+                <FieldErrorAlert errors={errors} fieldName={'deliveryAddress'} />
               </div>
+
+
               <div className="form-group pull-left">
                 <input type="submit" className="btn btn-danger" name="save" value="Đăng ký" fdprocessedid="2whfz" />
               </div>

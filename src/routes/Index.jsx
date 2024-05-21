@@ -26,7 +26,9 @@ import Cart from '../pages/Dashboard/Cart/Cart'
 import ShipOrder from '../pages/Dashboard/ShipOrders/ShipOrder/ShipOrder'
 import ResetPassword from '../pages/Dashboard/Auth/ResetPassword'
 import NotFound from '../pages/Dashboard/NotFound/NotFound'
-
+import DeliveryNote from '../pages/Dashboard/StoreVN/DeliveryNote/DeliveryNote'
+import ListComplains from '../pages/Dashboard/Complain/ListComplains/ListComplains'
+import ProtectedRoute from './ProtectedRoute'
 
 const router = createBrowserRouter([
   {
@@ -62,92 +64,105 @@ const router = createBrowserRouter([
             element: <GeneralBoard/>
           },
           {
-            path: 'shop',
-            element: <ReputableShop/>
-          },
-          {
-            path: 'order',
-            element: <Orders/>,
+            element: <ProtectedRoute/>,
             children: [
               {
-                path: 'list-orders',
-                element: <ListOrders/>
+                path: 'shop',
+                element: <ReputableShop/>
               },
               {
-                path: 'add-orders',
-                element: <AddOrders/>
+                path: 'order',
+                element: <Orders/>,
+                children: [
+                  {
+                    path: 'list-orders',
+                    element: <ListOrders/>
+                  },
+                  {
+                    path: 'add-orders',
+                    element: <AddOrders/>
+                  },
+                  {
+                    path: 'pending-orders',
+                    element: <PendingOrders/>
+                  }
+                ]
               },
               {
-                path: 'pending-orders',
-                element: <PendingOrders/>
+                path: 'member',
+                element: <Orders/>,
+                children: [
+                  {
+                    path: 'profile',
+                    element: <Profile/>
+                  },
+                  {
+                    path: 'change-password',
+                    element: <ChangePassword/>
+                  },
+                  {
+                    path: 'reduces',
+                    element: <Reduces/>
+                  },
+                  {
+                    path: 'wallet',
+                    element: <Wallet/>
+                  },
+                  {
+                    path: 'domestic-shipping',
+                    element: <DomesticShipping/>
+                  },
+                  {
+                    path: 'deposit',
+                    element: <Deposit/>
+                  }
+                ]
+              },
+              {
+                path: 'ship-orders',
+                element: <ShipOrders/>,
+                children: [
+                  {
+                    path: '',
+                    element: <ShipOrder/>
+                  },
+                  {
+                    path: 'list-ship-orders',
+                    element: <ListShipOrders/>
+                  },
+                  {
+                    path: 'list-ship-ids',
+                    element: <ListShipIds/>
+                  }
+                ]
+              },
+              {
+                path: 'ship',
+                element: <Ship/>,
+                children: [
+                  {
+                    path: 'transport',
+                    element: <Trasnport/>
+                  },
+                  {
+                    path: 'finship',
+                    element: <Finship/>
+                  }
+                ]
+              },
+              {
+                path: 'storevn',
+                element: <DeliveryNote/>
+              },
+              {
+                path: 'complain',
+                element: <ListComplains/>
+              },
+              {
+                path: 'cart',
+                element: <Cart/>
               }
             ]
-          },
-          {
-            path: 'member',
-            element: <Orders/>,
-            children: [
-              {
-                path: 'profile',
-                element: <Profile/>
-              },
-              {
-                path: 'change-password',
-                element: <ChangePassword/>
-              },
-              {
-                path: 'reduces',
-                element: <Reduces/>
-              },
-              {
-                path: 'wallet',
-                element: <Wallet/>
-              },
-              {
-                path: 'domestic-shipping',
-                element: <DomesticShipping/>
-              },
-              {
-                path: 'deposit',
-                element: <Deposit/>
-              }
-            ]
-          },
-          {
-            path: 'ship-orders',
-            element: <ShipOrders/>,
-            children: [
-              {
-                path: '',
-                element: <ShipOrder/>
-              },
-              {
-                path: 'list-ship-orders',
-                element: <ListShipOrders/>
-              },
-              {
-                path: 'list-ship-ids',
-                element: <ListShipIds/>
-              }
-            ]
-          },
-          {
-            path: 'ship',
-            element: <Ship/>,
-            children: [
-              {
-                path: 'transport',
-                element: <Trasnport/>
-              },
-              {
-                path: 'finship',
-                element: <Finship/>
-              }
-            ]
-          },
-          {
-            path: 'cart',
-            element: <Cart/>
           },
           {
             path: '*',

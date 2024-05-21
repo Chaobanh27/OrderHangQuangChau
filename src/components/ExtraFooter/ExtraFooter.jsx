@@ -72,7 +72,7 @@ const ExtraFooter = () => {
           </div>
         </div>
       </footer>
-      <div class="copyright">Copyright by Orderhangquangchau.com © 2014</div>
+      <div className="copyright">Copyright by Orderhangquangchau.com © 2014</div>
     </>
   )
 }
