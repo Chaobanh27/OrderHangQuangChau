@@ -43,8 +43,16 @@ const Dashboard = () => {
 
       <ExtraHeader/>
 
-      <Outlet/>
 
+      <div id="content">
+        <div className="container">
+          <main className="main" role="main">
+            <div className="row main-row">
+              <Outlet/>
+            </div>
+          </main>
+        </div>
+      </div>
       <ExtraFooter/>
     </>
   )
