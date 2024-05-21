@@ -5,7 +5,7 @@ const ExtraFooter = () => {
   return (
     <>
       <footer>
-        <div className="container">
+        <div className="container" style={{ padding: 0 }}>
           <div className="col1">
             <h4>ĐỊA CHỈ LIÊN HỆ</h4>
             <h5>Hà Nội</h5>
@@ -18,7 +18,7 @@ const ExtraFooter = () => {
             <span className="address">78/23 Ba Vân, P14, Quận Tân Bình - TPHCM</span>
             <span className="phone">0902.632.512</span>
           </div>
-          <div className="col2">
+          <div className="col2" >
             <h4>THÔNG TIN CHUYỂN KHOẢN</h4>
             <ul>
               <li>

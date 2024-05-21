@@ -29,14 +29,14 @@ import NotFound from '../pages/Dashboard/NotFound/NotFound'
 import DeliveryNote from '../pages/Dashboard/StoreVN/DeliveryNote/DeliveryNote'
 import ListComplains from '../pages/Dashboard/Complain/ListComplains/ListComplains'
 import ProtectedRoute from './ProtectedRoute'
-import HomePage from "../pages/Home/HomePage/HomePage";
-import PolicyPage from "../pages/Home/PolicyPage";
-import InstructionPage from "../pages/Home/Instruction";
-import PriceList from "../pages/Home/PriceList";
-import PriceListCon from "../pages/Home/PriceListC";
-import ServiceAlipay from "../pages/Home/ServiceAlipay";
-import TrackingPage from "../pages/Home/TrackingPage";
-import NewPage from "../pages/Home/NewPage";
+import HomePage from '../pages/Home/HomePage/HomePage'
+import PolicyPage from '../pages/Home/PolicyPage'
+import InstructionPage from '../pages/Home/Instruction'
+import PriceList from '../pages/Home/PriceList'
+import PriceListCon from '../pages/Home/PriceListC'
+import ServiceAlipay from '../pages/Home/ServiceAlipay'
+import TrackingPage from '../pages/Home/TrackingPage'
+import NewPage from '../pages/Home/NewPage'
 
 
 const router = createBrowserRouter([
@@ -45,60 +45,51 @@ const router = createBrowserRouter([
     element: <App/>,
     children: [
       {
-        path: "",
+        path: '',
         element: <Home />,
         children: [
           {
-            path: "/",
-            element: <HomePage />,
+            path: '/',
+            element: <HomePage />
           },
 
           {
-            path: "/bang-gia",
-            element: <PriceList />,
+            path: '/bang-gia',
+            element: <PriceList />
           },
           {
-            path: "/category/tin-tuc",
-            element: <NewPage />,
+            path: '/category/tin-tuc',
+            element: <NewPage />
           },
           {
-            path: "/bang-gia-ky-gui-hang",
-            element: <PriceListCon />,
+            path: '/bang-gia-ky-gui-hang',
+            element: <PriceListCon />
           },
           {
-            path: "/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung",
-            element: <ServiceAlipay />,
+            path: '/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung',
+            element: <ServiceAlipay />
           },
           {
-            path: "/chinh-sach-bao-mat",
-            element: <PolicyPage />,
+            path: '/chinh-sach-bao-mat',
+            element: <PolicyPage />
           },
           {
-            path: "/huong-dan-mua-hang-tren-taobao-1688",
-            element: <InstructionPage />,
+            path: '/huong-dan-mua-hang-tren-taobao-1688',
+            element: <InstructionPage />
           },
           {
-            path: "/tracking",
-            element: <TrackingPage />,
-          },
-        ],
+            path: '/tracking',
+            element: <TrackingPage />
+          }
+        ]
       },
       {
         path: 'dashboard',
         element: <Dashboard/>,
         children: [
           {
-            path: "/",
-            element: <HomePage />,
-          },
-
-          {
-            path: "/bang-gia",
-            element: <PriceList />,
-          },
-          {
-            path: "/category/tin-tuc",
-            element: <NewPage />,
+            path: 'login',
+            element: <LoginForm />
           },
           {
             path: 'register',
@@ -200,11 +191,11 @@ const router = createBrowserRouter([
                 ]
               },
               {
-                path: 'storevn',
+                path: 'storevn/delivery-note',
                 element: <DeliveryNote/>
               },
               {
-                path: 'complain',
+                path: 'complain/list-complains',
                 element: <ListComplains/>
               },
               {
@@ -225,6 +216,3 @@ const router = createBrowserRouter([
 
 
 export default router
-
-
-export default router;

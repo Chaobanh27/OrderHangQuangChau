@@ -13,7 +13,7 @@ const Deposit = () => {
           <div className="wallet_info">
             <div className="row">
               <div className="col-md-2">
-                <i className="fa fa-money fa-5x" style="color:#87cf82;font-size: 90px;" aria-hidden="true"></i>
+                <i className="fa fa-money fa-5x" style= {{ color:'#87cf82', fontSize: '90px' }} aria-hidden="true"></i>
               </div>
               <div className="col-md-10">
                 <h3>Số dư trong ví : <span className="green">0</span> <span className="small">VNĐ</span>   - Mã nạp tiền : <span className="green big">HQC6709CK</span></h3>
@@ -21,11 +21,6 @@ const Deposit = () => {
                   <p className="black">Tổng tiền hàng đã về chờ tất toán : <span className="red">0</span> đ </p>
                   <p className="black">Tổng tiền hàng chưa về : <span className="red">0</span> đ </p>
                   <p><a className="blue" target="_blank" rel="noreferrer" href="https://my.orderhangquangchau.com/member/reportowe">Xem chi tiết</a></p></div>
-                {/* <script>
-						$(document).ready(function(){
-							showCustomerOwe();
-						});
-					</script> */}
                 <a className="custom_bt" href="https://my.orderhangquangchau.com/member/wallet"><i className="fa fa-file-text fa-2x" aria-hidden="true"></i> Chi tiết giao dịch</a>
                 <a className="custom_bt active" href="#"><i className="fa fa-credit-card fa-2x" aria-hidden="true"></i> Nạp tiền</a>
               </div>

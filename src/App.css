@@ -1,3 +1,9 @@
+html {
+    background-color: white !important;
+}
+
+
+
 a[href^=tel] {
 color : inherit;
 text-decoration: none;
@@ -125,3 +131,5 @@ transform: scale3d(1, 1, 1);
 -webkit-animation-name: pulse_zalo;
 animation-name: pulse_zalo;
 }
+
+
