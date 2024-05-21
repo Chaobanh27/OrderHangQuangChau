@@ -3,6 +3,16 @@ import { Link } from 'react-router-dom'
 const ExtraHeader = () => {
   return (
     <>
+      <div className="top_header">
+        <div className="container">
+          <div className="pull-left">
+            <p className="ty_gia">Tỷ giá: 1¥ = 3,620</p>
+          </div>
+          <div className="pull-right">
+          </div>
+        </div>
+      </div>
+
       <header>
         <div className="container">
           <div className="row1">
@@ -57,7 +67,7 @@ const ExtraHeader = () => {
 
                 <li className="dropdown">
                   <i className="fa fa-tachometer" aria-hidden="true"></i>
-                  <a href="https://my.orderhangquangchau.com/dashboard">Bảng tin</a>
+                  <Link to='general-board' >Bảng tin</Link>
                 </li>
                 <li>
                   <i className="fa fa-sign-in" aria-hidden="true"></i>
@@ -79,7 +89,7 @@ const ExtraHeader = () => {
                 </li>
                 <li className="dropdown">
                   <i className="fa fa-star"></i>
-                  <a href="https://my.orderhangquangchau.com/shop">Shop uy tín</a>
+                  <Link to='shop' >Shop uy tín</Link>
                 </li>
 
 
