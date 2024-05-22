@@ -108,12 +108,12 @@ const router = createBrowserRouter([
             element: <GeneralBoard/>
           },
           {
+            path: 'shop',
+            element: <ReputableShop/>
+          },
+          {
             element: <ProtectedRoute/>,
             children: [
-              {
-                path: 'shop',
-                element: <ReputableShop/>
-              },
               {
                 path: 'order',
                 element: <Orders/>,
