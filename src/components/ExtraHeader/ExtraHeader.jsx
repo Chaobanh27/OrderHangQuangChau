@@ -1,11 +1,25 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaTachometerAlt, FaShoppingCart, FaBus, FaSignInAlt, FaBell, FaUserPlus, FaHospital, FaCreditCard, FaStar, FaFile, FaArchive, FaMoneyBill, FaUser } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
-import { selectCurrentUser } from '../../redux/user/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { logoutUserAPI, selectCurrentUser } from '../../redux/user/userSlice'
 
 
 const ExtraHeader = () => {
   const user = useSelector(selectCurrentUser)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    // Gọi API đăng xuất người dùng
+    dispatch(logoutUserAPI())
+      .then(() => {
+        navigate('login')
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error)
+      })
+  }
 
   const renderHeader = () => {
     if (user == null) {
@@ -139,7 +153,7 @@ const ExtraHeader = () => {
             <ul className="dropdown-menu">
               <li><Link to="member/profile">Thông tin cá nhân</Link></li>
               <li><Link to="member/change-password">Đổi mật khẩu</Link></li>
-              <li><Link to="">Đăng xuất</Link></li>
+              <li><Link onClick={handleLogout}>Đăng xuất</Link></li>
             </ul>
           </li>
         </>

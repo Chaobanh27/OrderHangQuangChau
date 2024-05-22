@@ -10,13 +10,21 @@ import {
 } from '../../../utils/validators'
 import FieldErrorAlert from '../../../components/Form/FieldErrorAlert'
 import { toast } from 'react-toastify'
-import { useDispatch } from 'react-redux'
-import { loginUserAPI } from '../../../redux/user/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginUserAPI, selectCurrentUser } from '../../../redux/user/userSlice'
+import { useEffect } from 'react'
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const user = useSelector(selectCurrentUser)
+
+  useEffect(() => {
+    if (user) {
+      navigate('member/profile')
+    }
+  }, [user, navigate])
 
   const submitLogIn = (data) => {
     const { email, password } = data
@@ -48,7 +56,7 @@ const LoginForm = () => {
                     <div className="button">
                       <Link className="btn btn-success" to='/dashboard/register'>Đăng ký tài khoản</Link>
                       {' '}
-                      {/* <a className="btn btn-danger" href="https://my.orderhangquangchau.com/resetpass">Khôi phục tài khoản</a> */}
+                      <Link className="btn btn-danger" to="">Khôi phục tài khoản</Link>
                     </div>
 
                   </div>
