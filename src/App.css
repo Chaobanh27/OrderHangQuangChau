@@ -131,5 +131,8 @@ transform: scale3d(1, 1, 1);
 -webkit-animation-name: pulse_zalo;
 animation-name: pulse_zalo;
 }
+html {
+    scroll-behavior: smooth;
+  }
 
 
