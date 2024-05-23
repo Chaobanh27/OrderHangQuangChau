@@ -1,34 +1,34 @@
 /* eslint-disable quotes */
-import { useEffect, useState } from "react";
-import "../Header/index.css";
-import { IoMailOpenOutline } from "react-icons/io5";
-import { FaPhone } from "react-icons/fa6";
-import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
-import { IoIosCart } from "react-icons/io";
-import { IoSearch } from "react-icons/io5";
+import { useEffect, useState } from "react"
+import "../Header/index.css"
+import { IoMailOpenOutline } from "react-icons/io5"
+import { FaPhone } from "react-icons/fa6"
+import { IoChevronDownOutline } from "react-icons/io5"
+import { IoIosCart } from "react-icons/io"
+import { IoSearch } from "react-icons/io5"
 
-import { IoIosLock } from "react-icons/io";
-import { ImUser } from "react-icons/im";
+import { IoIosLock } from "react-icons/io"
+import { ImUser } from "react-icons/im"
 const Header = () => {
-  const [showNav, setShowNav] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [showNav, setShowNav] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
 
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseEnter = () => setIsHovered(true)
+  const handleMouseLeave = () => setIsHovered(false)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
-        setShowNav(true);
+        setShowNav(true)
       } else {
-        setShowNav(false);
+        setShowNav(false)
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
   return (
     <header
       id="header"
@@ -62,7 +62,7 @@ const Header = () => {
                           style={{
                             fontSize: "16px",
                             color: "#fff",
-                            marginRight: "4px",
+                            marginRight: "4px"
                           }}
                         />
                         <span>orderhang89@gmail.com </span>
@@ -381,7 +381,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
