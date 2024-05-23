@@ -21,6 +21,42 @@ const ExtraHeader = () => {
       })
   }
 
+  const headerStyles = {
+    headerIconStyles : {
+      WebkitTextSizeAdjust: '100%',
+      WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
+      boxSizing: 'border-box',
+      display: 'inline-block',
+      font: 'normal normal normal 14px/1 FontAwesome',
+      textRendering: 'auto',
+      WebkitFontSmoothing: 'antialiased',
+      background: '#d75e29',
+      color: '#fff',
+      padding: '5px 6px',
+      borderRadius: '50%',
+      fontSize: '26px',
+      marginRight: '2px'
+    },
+    headerLiStyles:{
+      display: 'flex',
+      alignItems: 'center',
+      padding:'10px 0px'
+    }
+  }
+
+
+  const navbarStyles = {
+    navbarLiStyle : {
+      display: 'flex',
+      alignItems: 'center'
+    },
+    navbarIconStyles:{
+      color: 'white',
+      fontSize: '20px',
+      marginRight: '2px'
+    }
+  }
+
   const renderHeader = () => {
     if (user == null) {
       return (
@@ -36,71 +72,85 @@ const ExtraHeader = () => {
     return (
       <div className="container">
         <div className="pull-left">
-          <p>
-            <Link to="member/profile">
-              {/* <i className="fa fa-user"></i> */}
-              <FaUser/>
+          <div style={ headerStyles.headerLiStyles }>
+            <FaUser style={headerStyles.headerIconStyles}/>
+            <Link to="member/profile" >
 								Xin chào,
-
               <span className="red"><b>chaobanhnguyen</b></span>
             </Link>
-
-									| <Link to="">Thoát</Link>
-          </p>
+            |
+            <Link onClick={handleLogout}>Thoát</Link>
+          </div>
 
         </div>
 
         <div className="pull-left">
-          <p className="ty_gia">
+          <div style={ headerStyles.headerLiStyles }>
+            <FaCreditCard style={headerStyles.headerIconStyles}/>
             <Link to="member/wallet">
-              {/* <i className="fa fa-credit-card" aria-hidden="true"></i> */}
-              <FaCreditCard/>
 							Số dư khả dụng: <span className="num_icon">0</span> VNĐ
             </Link>
-          </p>
+          </div>
         </div>
-        <div className="pull-left">
+        <div className="pull-left" style={{ marginTop: '3px' }}>
           <p className="ty_gia">Tỷ giá: 1¥ = 3,625</p>
         </div>
         <div className="pull-right">
           <div className="pull-left">
           </div>
-          <div className="pull-right">
-            <p>
-              <span className="text">
-                {/* <i className="fa fa-shopping-cart " aria-hidden="true"></i> */}
-                <FaShoppingCart/>
-                <Link to="cart"> Giỏ hàng <span className="num_icon">0</span></Link>
-              </span>  <span className="text">
-                {/* <i className="fa fa-bus" aria-hidden="true"></i> */}
-                <FaBus/>
-                <Link to="ship-orders"> Giỏ hàng ký gửi</Link>
-              </span>
-
-              <a className="popup_link" onClick="showNotificationOverLay(this)"><span>
-                {/* <i className="fa fa-bell-o" aria-hidden="true"></i> */}
-                <FaBell/>
-							Thông báo <span className="num_icon">0</span>
-              </span></a>
-            </p>
+          <div className="pull-right" >
+            <div style={{ display: 'flex', alignItems: 'center', padding:'10px' }}>
+              <FaShoppingCart style={headerStyles.headerIconStyles}/>
+              <Link to="cart" style={{ marginRight:'10px' }}> Giỏ hàng <span className="num_icon">0</span></Link>
+              <FaBus style={headerStyles.headerIconStyles}/>
+              <Link to="ship-orders" style={{ marginRight:'10px' }}> Giỏ hàng ký gửi</Link>
+              <FaBell style={headerStyles.headerIconStyles}/>
+              <Link>Thông báo </Link>
+              <span className="num_icon" >0</span>
+            </div>
           </div>
 
         </div>
       </div>
     )
   }
+
+  const links = {
+    ordersArray : [
+      { to: 'order/add-orders', label: 'Tạo đơn hàng' },
+      { to: 'order/pending-orders', label: 'Đang chờ cọc' },
+      { to: 'order/list-orders', label: 'Toàn bộ đơn hàng' },
+      { to: 'ship-orders/list-ship-orders', label: 'Đơn hàng ký gửi' },
+      { to: 'ship-orders/list-ship-ids', label: 'DS vận đơn ký gửi' },
+      { to: 'storevn/delivery-note', label: 'DS phiếu giao hàng KG' },
+      { to: 'complain/list-complains', label: 'Khiếu nại' },
+      { to: 'member/reduces', label: 'Giảm trừ đơn hàng' }
+    ],
+    memberArray : [
+      { to: 'member/profile', label: 'Thông tin cá nhân' },
+      { to: 'member/change-password', label: 'Đổi mật khẩu' }
+    ],
+    shipArray: [
+      { to: 'ship/transport', label: 'Danh sách kiện' },
+      { to: 'ship/finship', label: 'Tra cứu kiện hàng' },
+      { to: 'member/domestic-shipping', label: 'Phí VC nội địa' }
+    ],
+    financeArray: [
+      { to: 'member/wallet', label: 'Danh sách kiện' },
+      { to: 'member/deposit', label: 'Tra cứu kiện hàng' }
+    ]
+  }
+
   const renderNavbar = () => {
     if (user == null) {
       return (
         <>
-          <li style={{ display: 'flex', alignItems: 'center' }}>
-            {/* <i className="fa fa-sign-in" aria-hidden="true"></i> */}
-            <FaSignInAlt style={{ color: 'white', fontSize: '20px', marginRight: '2px' }} />
+          <li style={ navbarStyles.navbarLiStyle }>
+            <FaSignInAlt style={navbarStyles.navbarIconStyles} />
             <Link to='login' >Đăng nhập</Link>
           </li>
-          <li style={{ display: 'flex', alignItems: 'center' }}>
-            {/* <i className="fa fa-user-plus" aria-hidden="true"></i> */}
-            <FaUserPlus style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
+          <li style={ navbarStyles.navbarLiStyle }>
+            <FaUserPlus style={navbarStyles.navbarIconStyles}/>
             <Link to='register' >Đăng ký</Link>
           </li>
         </>
@@ -108,51 +158,68 @@ const ExtraHeader = () => {
     } else {
       return (
         <>
-          <li className="dropdown">
-            {/* <i className="fa fa-file-text"></i> */}
-            <FaFile style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
+          <li className="dropdown" style={ navbarStyles.navbarLiStyle }>
+            <FaFile style={navbarStyles.navbarIconStyles}/>
             <Link to="order/list-orders">Đơn hàng</Link>
             <span className="caret"></span>
             <ul className="dropdown-menu">
-              <li><Link to="order/add-orders">Tạo đơn hàng</Link></li>
-              <li><Link to="order/pending-orders">Đang chờ cọc</Link></li>
-              <li><Link to="order/list-orders">Toàn bộ đơn hàng</Link></li>
-              <li><Link to="ship-orders/list-ship-orders">Đơn hàng ký gửi</Link></li>
-              <li><Link to="ship-orders/list-ship-ids">DS vận đơn ký gửi</Link></li>
-              <li><Link to="storevn/delivery-note">DS phiếu giao hàng KG</Link></li>
-              <li><Link to="complain/list-complains">Khiếu nại</Link></li>
-              <li><Link to="member/reduces">Giảm trừ đơn hàng</Link></li>
+              {
+                Object.keys(links)?.length > 0 &&
+                links.ordersArray?.length > 0 &&
+                links.ordersArray.map((value, index) => (
+                  <li key={index}>
+                    <Link to={value?.to}>{value?.label}</Link>
+                  </li>
+                ))
+              }
             </ul>
           </li>
-          <li className="dropdown">
-            {/* <i className="fa fa-archive" aria-hidden="true"></i> */}
-            <FaArchive style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
+          <li className="dropdown" style={ navbarStyles.navbarLiStyle }>
+            <FaArchive style={navbarStyles.navbarIconStyles}/>
             <Link to="ship/transport">Kiện hàng</Link>
             <span className="caret"></span>
             <ul className="dropdown-menu">
-              <li><Link to="ship/transport">Danh sách kiện</Link></li>
-              <li><Link to="ship/finship">Tra cứu kiện hàng</Link></li>
-              <li><Link to="member/domestic-shipping">Phí VC nội địa</Link></li>
+              {
+                Object.keys(links).length > 0 &&
+                links.shipArray?.length > 0 &&
+                links.shipArray.map((value, index) => (
+                  <li key={index}>
+                    <Link to={value?.to}>{value?.label}</Link>
+                  </li>
+                ))
+              }
             </ul>
           </li>
-          <li className="dropdown">
-            {/* <i className="fa fa-money" aria-hidden="true"></i> */}
-            <FaMoneyBill style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
+          <li className="dropdown" style={ navbarStyles.navbarLiStyle }>
+            <FaMoneyBill style={navbarStyles.navbarIconStyles}/>
             <Link to="member/wallet">Tài chính</Link>
             <span className="caret"></span>
             <ul className="dropdown-menu">
-              <li><Link to="member/wallet">Xem giao dịch</Link></li>
-              <li><Link to="member/deposit">Nạp tiền</Link></li>
+              {
+                Object.keys(links).length > 0 &&
+                links.financeArray?.length > 0 &&
+                links.financeArray.map((value, index) => (
+                  <li key={index}>
+                    <Link to={value?.to}>{value?.label}</Link>
+                  </li>
+                ))
+              }
             </ul>
           </li>
-          <li className="dropdown">
-            {/* <i className="fa fa-user" aria-hidden="true"></i> */}
-            <FaUser style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
+          <li className="dropdown" style={ navbarStyles.navbarLiStyle }>
+            <FaUser style={navbarStyles.navbarIconStyles}/>
             <Link to="member/profile">Tài khoản</Link>
             <span className="caret"></span>
             <ul className="dropdown-menu">
-              <li><Link to="member/profile">Thông tin cá nhân</Link></li>
-              <li><Link to="member/change-password">Đổi mật khẩu</Link></li>
+              {
+                Object.keys(links).length > 0 &&
+                links.memberArray?.length > 0 &&
+                links.memberArray.map((value, index) => (
+                  <li key={index}>
+                    <Link to={value?.to}>{value?.label}</Link>
+                  </li>
+                ))
+              }
               <li><Link onClick={handleLogout}>Đăng xuất</Link></li>
             </ul>
           </li>
@@ -228,19 +295,16 @@ const ExtraHeader = () => {
 
 
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <i className="fa fa-hospital-o"></i> */}
                   <FaHospital style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
-                  <a target="_blank" rel="noreferrer" href="http://orderhangquangchau.com/order-hang-taobao-gia-re/">Bảng giá</a>
+                  <Link target="_blank" rel="noreferrer" to="/bang-gia">Bảng giá</Link>
                 </li>
 
 
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <i className="fa fa-credit-card"></i> */}
                   <FaCreditCard style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
                   <a target="_blank" rel="noreferrer" href="http://orderhangquangchau.com/dat-hang-taobao.html">Thông tin thanh toán</a>
                 </li>
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <i className="fa fa-star"></i> */}
                   <FaStar style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
                   <Link to='shop' >Shop uy tín</Link>
                 </li>

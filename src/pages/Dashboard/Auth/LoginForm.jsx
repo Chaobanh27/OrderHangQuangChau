@@ -56,7 +56,7 @@ const LoginForm = () => {
                     <div className="button">
                       <Link className="btn btn-success" to='/dashboard/register'>Đăng ký tài khoản</Link>
                       {' '}
-                      <Link className="btn btn-danger" to="">Khôi phục tài khoản</Link>
+                      <Link className="btn btn-danger" to="/dashboard/reset-password">Khôi phục tài khoản</Link>
                     </div>
 
                   </div>
