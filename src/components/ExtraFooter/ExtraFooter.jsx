@@ -4,7 +4,7 @@ import IC16 from '../../assets/ic16.png'
 const ExtraFooter = () => {
   return (
     <>
-      <footer>
+      <footer style={{ overflow:'hidden' }}>
         <div className="container" style={{ padding: '0px 5px' }}>
           <div className="col1">
             <h4>ĐỊA CHỈ LIÊN HỆ</h4>

@@ -295,19 +295,16 @@ const ExtraHeader = () => {
 
 
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <i className="fa fa-hospital-o"></i> */}
                   <FaHospital style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
-                  <a target="_blank" rel="noreferrer" href="http://orderhangquangchau.com/order-hang-taobao-gia-re/">Bảng giá</a>
+                  <Link target="_blank" rel="noreferrer" to="/bang-gia">Bảng giá</Link>
                 </li>
 
 
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <i className="fa fa-credit-card"></i> */}
                   <FaCreditCard style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
                   <a target="_blank" rel="noreferrer" href="http://orderhangquangchau.com/dat-hang-taobao.html">Thông tin thanh toán</a>
                 </li>
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <i className="fa fa-star"></i> */}
                   <FaStar style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
                   <Link to='shop' >Shop uy tín</Link>
                 </li>
