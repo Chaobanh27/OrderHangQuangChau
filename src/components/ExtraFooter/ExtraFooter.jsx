@@ -73,6 +73,14 @@ const ExtraFooter = () => {
         </div>
       </footer>
       <div className="copyright">Copyright by Orderhangquangchau.com © 2014</div>
+      <div id="fb-root" className=" fb_reset"><div style= {{ position: 'absolute', top: '-10000px', width: '0px', height: '0px' }}><div></div></div></div>
+      <div className="zalo-container right" style= {{ bottom:'70px' }}>
+        <a id="zalo-btn" href="https://zalo.me/0393241666" target="_blank" rel="noopener noreferrer nofollow">
+          <div className="animated_zalo infinite zoomIn_zalo cmoz-alo-circle"></div>
+          <div className="animated_zalo infinite pulse_zalo cmoz-alo-circle-fill"></div>
+          <span><img src="https://vetranhtuongpro.net/wp-content/plugins/contact-me-on-zalo/assets/images/zalo-2.png" alt="Contact Me on Zalo" /></span>
+        </a>
+      </div>
     </>
   )
 }

@@ -244,9 +244,9 @@ const ExtraHeader = () => {
         <div className="container">
           <div className="row1">
             <div className="pull-left">
-              <a className="main_logo" target="_blank" rel="noreferrer" href="http://orderhangquangchau.com">
+              <Link className="main_logo" target="_blank" rel="noreferrer" to="/">
                 <img src="https://my.orderhangquangchau.com/static/images/logo_ex.png" alt="Orderhangquangchau.com" />
-              </a>
+              </Link>
             </div>
 
             <div className="pull-right">
