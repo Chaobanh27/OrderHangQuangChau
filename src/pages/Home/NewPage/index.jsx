@@ -1,4 +1,5 @@
 /* eslint-disable quotes */
+import { IoChevronForward } from "react-icons/io5";
 const NewPage = () => {
   return (
     <main id="main" className="">
@@ -512,7 +513,13 @@ const NewPage = () => {
                   className="next page-number"
                   href="https://orderhangquangchau.com/category/tin-tuc/page/2"
                 >
-                  <i className="icon-angle-right"></i>
+                  <IoChevronForward
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignContent: "center",
+                    }}
+                  />
                 </a>
               </li>
             </ul>

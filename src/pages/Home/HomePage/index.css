@@ -2,6 +2,12 @@
     width: 99%;
 }
 
+.quy_trinh_dat_hang>div:after {
+    font-size: 30px;
+    top: 10%;
+    display: none !important;
+}
+
 #text-box-1571724355 .text-box-content {
     font-size: 100%;
 }
@@ -740,6 +746,7 @@ html {
     .quy_trinh_dat_hang>div:after {
         font-size: 30px;
         top: 10%;
+        display: none !important;
     }
 
     #wide-nav .container {
@@ -1026,6 +1033,16 @@ img.emoji {
 .header .has-sticky .sticky-jump.show{
     height: 100px ;
 }
-.customHoverPreview:hover .slider .flickity-prev-next-button{
+/* .flickity-button .flickity-prev-next-button{
     opacity: 1;
+} */
+.icon-quy-trinh {
+    display: block;
+    font-size: 30px;
+    line-height: 66px;
+    position: absolute;
+    right: 0;
+    top: 30%;
+    left: 93%;
 }
+

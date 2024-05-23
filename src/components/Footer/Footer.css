@@ -1,3 +1,6 @@
+.footer-wrapper{
+  
+}
 #image_432968465 {
     width: 48%;
 }
@@ -43,3 +46,9 @@
 .container-width, .full-width .ubermenu-nav, .container, .row{
   /* max-width: 1150px !important; */
 }
+/* .back-to-top {
+  display: none !important;
+}
+.back-to-top.active {
+  display: block;
+} */
