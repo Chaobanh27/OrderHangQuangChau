@@ -2,6 +2,8 @@
 import { useState } from "react";
 import "../HomePage/index.css";
 import { useEffect } from "react";
+import { IoStarOutline } from "react-icons/io5";
+import { IoChevronForward } from "react-icons/io5";
 
 const HomePage = () => {
   const [showNav, setShowNav] = useState(false);
@@ -188,6 +190,7 @@ const HomePage = () => {
                               </h3>
                             </div>
                           </div>
+                          <IoChevronForward className="icon-quy-trinh" />
                         </div>
                       </div>
                     </div>
@@ -225,6 +228,7 @@ const HomePage = () => {
                                 ĐƠN HÀNG
                               </h3>
                             </div>
+                            <IoChevronForward className="icon-quy-trinh" />
                           </div>
                         </div>
                       </div>
@@ -264,6 +268,7 @@ const HomePage = () => {
                                 TIỀN HÀNG
                               </h3>
                             </div>
+                            <IoChevronForward className="icon-quy-trinh" />
                           </div>
                         </div>
                       </div>
@@ -299,6 +304,7 @@ const HomePage = () => {
                             <div id="text-1166180467" className="text">
                               <h3>THEO DÕI ĐƠN HÀNG</h3>
                             </div>
+                            <IoChevronForward className="icon-quy-trinh" />
                           </div>
                         </div>
                       </div>
@@ -699,7 +705,7 @@ const HomePage = () => {
                             className="ux-menu-link__link flex"
                             href="https://orderhangquangchau.com/bang-gia"
                           >
-                            <i className="ux-menu-link__icon text-center icon-star-o"></i>
+                            <IoStarOutline />
                             <span className="ux-menu-link__text">
                               Bảng giá đặt hàng
                             </span>
@@ -711,7 +717,7 @@ const HomePage = () => {
                             className="ux-menu-link__link flex"
                             href="https://orderhangquangchau.com/bang-gia-ky-gui-hang.html"
                           >
-                            <i className="ux-menu-link__icon text-center icon-star-o"></i>
+                            <IoStarOutline />
                             <span className="ux-menu-link__text">
                               Bảng giá ký gửi vận chuyển
                             </span>
@@ -723,7 +729,7 @@ const HomePage = () => {
                             className="ux-menu-link__link flex"
                             href="https://orderhangquangchau.com/bang-gia-ky-gui-hang.html"
                           >
-                            <i className="ux-menu-link__icon text-center icon-star-o"></i>
+                            <IoStarOutline />
                             <span className="ux-menu-link__text">
                               Bảng giá vận chuyển hàng lô, hàng nặng
                             </span>
@@ -735,7 +741,7 @@ const HomePage = () => {
                             className="ux-menu-link__link flex"
                             href="https://orderhangquangchau.com/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung.html"
                           >
-                            <i className="ux-menu-link__icon text-center icon-star-o"></i>
+                            <IoStarOutline />
                             <span className="ux-menu-link__text">
                               Bảng giá dịch vụ chuyển tiền
                             </span>

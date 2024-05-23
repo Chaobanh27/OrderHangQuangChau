@@ -47,14 +47,14 @@ const TrackingPage = () => {
                 ></input>
                 <button type="submit" id="btn_tracking" className="">
                   Tra cứu đơn hàng
-                  <img src="/wp-content/themes/flatsome-child/images/ic1-1.png"></img>
+                  <img src="https://orderhangquangchau.com/wp-content/themes/flatsome-child/images/ic1-1.png"></img>
                 </button>
               </form>
             </div>
           </div>
           <div className="large-5 col">
             <div className="col-inner">
-              <img src="/wp-content/themes/flatsome-child/images/tracking-order.png"></img>
+              <img src="https://orderhangquangchau.com/wp-content/themes/flatsome-child/images/tracking-order.png"></img>
             </div>
           </div>
           <div className="large-12 col">

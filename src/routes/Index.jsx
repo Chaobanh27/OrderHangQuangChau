@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 import { createBrowserRouter } from 'react-router-dom'
 import App from '../App'
 import Dashboard from '../pages/Dashboard/Dashboard'
@@ -87,19 +88,6 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <Dashboard/>,
         children: [
-          {
-            path: "/",
-            element: <HomePage />,
-          },
-
-          {
-            path: "/bang-gia",
-            element: <PriceList />,
-          },
-          {
-            path: "/category/tin-tuc",
-            element: <NewPage />,
-          },
           {
             path: 'register',
             element: <RegisterForm/>
@@ -224,7 +212,6 @@ const router = createBrowserRouter([
 ])
 
 
-export default router
 
 
 export default router;
