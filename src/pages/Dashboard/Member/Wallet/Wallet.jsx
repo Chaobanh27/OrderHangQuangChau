@@ -1,6 +1,13 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unknown-property */
+import { DatePicker } from 'antd'
+import { FaMoneyBill, FaCreditCard, FaFile } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Wallet = () => {
+  const onChange = (date, dateString) => {
+    console.log(date, dateString)
+  }
   return (
     <>
       <div className="col-sm-9">
@@ -14,7 +21,7 @@ const Wallet = () => {
           <div className="wallet_info">
             <div className="row">
               <div className="col-md-2">
-                <i className="fa fa-money fa-5x" style= {{ color:'#87cf82', fontSize: '90px' }} aria-hidden="true"></i>
+                <FaMoneyBill style= {{ color:'#87cf82', fontSize: '90px' }}/>
               </div>
               <div className="col-md-10">
                 <h3>Số dư trong ví : <span className="green">0</span> <span className="small">VNĐ</span> - Mã nạp tiền : <span className="green big">HQC6709CK</span></h3>
@@ -22,8 +29,13 @@ const Wallet = () => {
                   <p className="black">Tổng tiền hàng đã về chờ tất toán : <span className="red">0</span> đ </p>
                   <p className="black">Tổng tiền hàng chưa về : <span className="red">0</span> đ </p>
                   <p><a className="blue" target="_blank" rel="noreferrer" href="https://my.orderhangquangchau.com/member/reportowe">Xem chi tiết</a></p></div>
-                <span className="custom_bt active"><i className="fa fa-file-text fa-2x" aria-hidden="true"></i> Chi tiết giao dịch</span>
-                <a className="custom_bt" href="https://my.orderhangquangchau.com/member/deposit"><i className="fa fa-credit-card fa-2x" aria-hidden="true"></i> Nạp tiền</a>
+                <span className="custom_bt active">
+                  <FaFile/>
+                  Chi tiết giao dịch
+                </span>
+                <Link className="custom_bt" to="/dashboard/member/deposit">
+                  <FaCreditCard/>
+                  Nạp tiền</Link>
               </div>
             </div>
           </div>
@@ -34,8 +46,10 @@ const Wallet = () => {
               <div className="space20"></div>
               <form className="form-horizontal" method="get">
 				Mã đơn hàng : <input className="custom_input" type="text" name="filter_invoiceid" value="" fdprocessedid="tmwr8" />
-				Từ ngày : <input className="pickdate_from custom_input hasDatepicker" type="text" id="datepicker_from" name="filter_startdate_create_date" value="" fdprocessedid="vnf8dc" />
-				Đến ngày : <input className="pickdate_to custom_input hasDatepicker" type="text" id="datepicker_to" name="filter_enddate_create_date" value="" fdprocessedid="9ez7n8" />
+				Từ ngày :
+                <DatePicker onChange={onChange} needConfirm />
+				Đến ngày :
+                <DatePicker onChange={onChange} needConfirm />
                 <br/>
                 <div className="space10"></div>
 				Loại giao dịch :
