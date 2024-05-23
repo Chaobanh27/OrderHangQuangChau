@@ -10,29 +10,31 @@ import { FaBars } from "react-icons/fa6";
 
 import { IoIosLock } from "react-icons/io";
 import { ImUser } from "react-icons/im";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Flex } from "antd";
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
   // nút scrollTo
   const [isHovered, setIsHovered] = useState(false);
   const [code, SetCode] = useState("");
 
-  const handleMouseEnter = () => setIsHovered(true)
-  const handleMouseLeave = () => setIsHovered(false)
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+  const navigation = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
-        setShowNav(true)
+        setShowNav(true);
       } else {
-        setShowNav(false)
+        setShowNav(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <header
       id="header"
@@ -66,7 +68,7 @@ const Header = () => {
                           style={{
                             fontSize: "16px",
                             color: "#fff",
-                            marginRight: "4px"
+                            marginRight: "4px",
                           }}
                         />
                         <span>orderhang89@gmail.com </span>
@@ -217,30 +219,29 @@ const Header = () => {
             </div>
 
             {/* <!-- Left Elements --> */}
-            <div
+            <span
               className="flex-col hide-for-medium flex-left
           flex-grow"
             >
-              <div className="search_auto ">
-                <form
-                  action="/tracking"
-                  method="post"
-                  className="header_form_tracking"
+              <Flex className="search_auto ">
+                <input
+                  type="text"
+                  name="code"
+                  value={code}
+                  placeholder="Nhập mã vận đơn cần tra cứu"
+                  onChange={(e) => SetCode(e.target.value)}
+                ></input>
+                <button
+                  style={{ display: "flex", alignItems: "center" }}
+                  type="submit"
                   id=""
+                  className=""
+                  onClick={() => navigation("/tracking")}
                 >
-                  <input
-                    type="text"
-                    name="code"
-                    value={code}
-                    placeholder="Nhập mã vận đơn cần tra cứu"
-                    onChange={(e) => SetCode(e.target.value)}
-                  ></input>
-                  <button type="submit" id="" className="">
-                    <IoSearch />
-                  </button>
-                </form>
-              </div>
-            </div>
+                  <IoSearch style={{ color: "#fff", fontSize: "18px" }} />
+                </button>
+              </Flex>
+            </span>
 
             {/* <!-- Right Elements --> */}
             <div className="flex-col hide-for-medium flex-right">
@@ -257,7 +258,7 @@ const Header = () => {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                   id="menu-item-1159"
-                  className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1159 menu-item-design-default ${isHovered ? "current-dropdown" : ""}`}
+                  className={` ${location.pathname === "/bang-gia" || location.pathname === "/bang-gia-ky-gui-hang" || location.pathname === "/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung" ? "active" : ""} menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1159 menu-item-design-default ${isHovered ? "current-dropdown" : ""}`}
                 >
                   <Link to={"/bang-gia"} className="nav-top-link">
                     Bảng giá <IoChevronDownOutline />
@@ -303,7 +304,7 @@ const Header = () => {
                 </li>
                 <li
                   id="menu-item-1161"
-                  className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1161 menu-item-design-default"
+                  className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-1161 menu-item-design-default ${location.pathname === "/huong-dan-mua-hang-tren-taobao-1688" ? "active" : ""}`}
                 >
                   <Link
                     to={"/huong-dan-mua-hang-tren-taobao-1688"}
@@ -314,7 +315,7 @@ const Header = () => {
                 </li>
                 <li
                   id="menu-item-12"
-                  className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12 menu-item-design-default"
+                  className={`menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12 menu-item-design-default ${location.pathname === "/category/tin-tuc" ? "active" : ""} `}
                 >
                   <Link to={"/category/tin-tuc"} className="nav-top-link">
                     Tin tức
@@ -322,7 +323,7 @@ const Header = () => {
                 </li>
                 <li
                   id="menu-item-1168"
-                  className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1168 menu-item-design-default"
+                  className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-1168 menu-item-design-default ${location.pathname === "/tracking" ? "active" : ""}`}
                 >
                   <Link to={"/tracking"} className="nav-top-link">
                     Vận đơn
@@ -345,25 +346,23 @@ const Header = () => {
           <div className="flex-row container">
             <div className="flex-col show-for-medium flex-grow">
               <ul className="nav header-bottom-nav nav-center mobile-nav  nav-uppercase">
-                <div className="search_auto ">
-                  <form
-                    action="/tracking"
-                    method="post"
-                    className="header_form_tracking"
+                <Flex className="search_auto ">
+                  <input
+                    type="text"
+                    name="code"
+                    value={code}
+                    placeholder="Nhập mã vận đơn cần tra cứu"
+                    onChange={(e) => SetCode(e.target.value)}
+                  ></input>
+                  <button
+                    onClick={() => navigation("/tracking")}
+                    type="submit"
                     id=""
+                    className=""
                   >
-                    <input
-                      type="text"
-                      name="code"
-                      value={code}
-                      placeholder="Nhập mã vận đơn cần tra cứu"
-                      onChange={(e) => SetCode(e.target.value)}
-                    ></input>
-                    <button type="submit" id="" className="">
-                      <IoSearch />
-                    </button>
-                  </form>
-                </div>
+                    <IoSearch style={{ color: "#fff" }} />
+                  </button>
+                </Flex>
               </ul>
             </div>
           </div>
@@ -375,7 +374,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
