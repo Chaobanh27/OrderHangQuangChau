@@ -1,5 +1,14 @@
 /* eslint-disable quotes */
+import { useEffect } from "react";
+import { IoChevronBackSharp, IoChevronForward } from "react-icons/io5";
+import { useLocation } from "react-router-dom";
+
+/* eslint-disable quotes */
 const ServiceAlipay = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, [location]);
   return (
     <main id="main" className="">
       <div id="content" className="blog-wrapper blog-single page-wrapper">
@@ -154,26 +163,47 @@ const ServiceAlipay = () => {
                     <div className="flex-col flex-grow nav-prev text-left">
                       <div className="nav-previous">
                         <a
+                          style={{ display: "flex", justifyContent: "start" }}
                           href="https://orderhangquangchau.com/kinh-nghiem-ban-hang-oder-khong-bi-khach-huy-don-hang.html"
                           rel="prev"
                         >
-                          <span className="hide-for-small">
-                            <i className="icon-angle-left"></i>
-                          </span>
-                          Kinh nghiệm bán hàng oder không bị khách hủy đơn hàng
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              marginRight: "10px",
+                              fontSize: "26px ",
+                            }}
+                            className="hide-for-small"
+                          >
+                            <IoChevronBackSharp />
+                          </div>
+                          <div>
+                            Kinh nghiệm bán hàng oder không bị khách hủy đơn
+                            hàng
+                          </div>
                         </a>
                       </div>
                     </div>
                     <div className="flex-col flex-grow nav-next text-right">
                       <div className="nav-next">
                         <a
+                          style={{ display: "flex", justifyContent: "end" }}
                           href="https://orderhangquangchau.com/huong-dan-nhap-hang-buon-hang-si-tren-1688.html"
                           rel="next"
                         >
-                          Hướng dẫn nhập hàng buôn, hàng sỉ trên 1688
-                          <span className="hide-for-small">
-                            <i className="icon-angle-right"></i>
-                          </span>
+                          <div>Hướng dẫn nhập hàng buôn, hàng sỉ trên 1688</div>
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              marginLeft: "10px",
+                              fontSize: "26px ",
+                            }}
+                            className="hide-for-small"
+                          >
+                            <IoChevronForward />
+                          </div>
                         </a>
                       </div>
                     </div>

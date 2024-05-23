@@ -1,5 +1,15 @@
 /* eslint-disable quotes */
+import { useEffect } from "react";
+import { IoChevronForward } from "react-icons/io5";
+import { useLocation } from "react-router-dom";
+import { IoChevronBackSharp } from "react-icons/io5";
+
+/* eslint-disable quotes */
 const PriceListCon = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, [location]);
   return (
     <main id="main" className="">
       <div id="content" className="blog-wrapper blog-single page-wrapper">
@@ -500,26 +510,44 @@ const PriceListCon = () => {
                     <div className="flex-col flex-grow nav-prev text-left">
                       <div className="nav-previous">
                         <a
+                          style={{ display: "flex", justifyContent: "start" }}
                           href="https://orderhangquangchau.com/cach-chon-khan-quang-co-cho-nguoi-thap.html"
                           rel="prev"
                         >
-                          <span className="hide-for-small">
-                            <i className="icon-angle-left"></i>
-                          </span>
-                          Cách chọn khăn quàng cổ cho người thấp
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              marginRight: "10px",
+                              fontSize: "26px ",
+                            }}
+                            className="hide-for-small"
+                          >
+                            <IoChevronBackSharp />
+                          </div>
+                          <div> Cách chọn khăn quàng cổ cho người thấp</div>
                         </a>
                       </div>
                     </div>
                     <div className="flex-col flex-grow nav-next text-right">
                       <div className="nav-next">
                         <a
+                          style={{ display: "flex", justifyContent: "end" }}
                           href="https://orderhangquangchau.com/thong-bao-lich-nghi-tet-2023.html"
                           rel="next"
                         >
-                          Thông báo lịch nghỉ tết 2023
-                          <span className="hide-for-small">
-                            <i className="icon-angle-right"></i>
-                          </span>
+                          <div>Thông báo lịch nghỉ tết 2023</div>
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              marginLeft: "10px",
+                              fontSize: "26px ",
+                            }}
+                            className="hide-for-small"
+                          >
+                            <IoChevronForward />
+                          </div>
                         </a>
                       </div>
                     </div>
