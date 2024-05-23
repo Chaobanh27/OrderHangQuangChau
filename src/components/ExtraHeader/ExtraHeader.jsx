@@ -1,24 +1,156 @@
-import { Link } from 'react-router-dom'
-import { FaTachometerAlt, FaSignInAlt, FaUserPlus, FaHospital, FaCreditCard, FaStar, FaFile, FaArchive, FaMoneyBill, FaUser } from 'react-icons/fa'
-import { useSelector } from 'react-redux'
-import { selectCurrentUser } from '../../redux/user/userSlice'
+import { Link, useNavigate } from 'react-router-dom'
+import { FaTachometerAlt, FaShoppingCart, FaBus, FaSignInAlt, FaBell, FaUserPlus, FaHospital, FaCreditCard, FaStar, FaFile, FaArchive, FaMoneyBill, FaUser } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import { logoutUserAPI, selectCurrentUser } from '../../redux/user/userSlice'
 
 
 const ExtraHeader = () => {
   const user = useSelector(selectCurrentUser)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    // Gọi API đăng xuất người dùng
+    dispatch(logoutUserAPI())
+      .then(() => {
+        navigate('login')
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error)
+      })
+  }
+
+  const headerStyles = {
+    headerIconStyles : {
+      WebkitTextSizeAdjust: '100%',
+      WebkitTapHighlightColor: 'rgba(0, 0, 0, 0)',
+      boxSizing: 'border-box',
+      display: 'inline-block',
+      font: 'normal normal normal 14px/1 FontAwesome',
+      textRendering: 'auto',
+      WebkitFontSmoothing: 'antialiased',
+      background: '#d75e29',
+      color: '#fff',
+      padding: '5px 6px',
+      borderRadius: '50%',
+      fontSize: '26px',
+      marginRight: '2px'
+    },
+    headerLiStyles:{
+      display: 'flex',
+      alignItems: 'center',
+      padding:'10px 0px'
+    }
+  }
+
+
+  const navbarStyles = {
+    navbarLiStyle : {
+      display: 'flex',
+      alignItems: 'center'
+    },
+    navbarIconStyles:{
+      color: 'white',
+      fontSize: '20px',
+      marginRight: '2px'
+    }
+  }
+
+  const renderHeader = () => {
+    if (user == null) {
+      return (
+        <div className="container">
+          <div className="pull-left">
+            <p className="ty_gia">Tỷ giá: 1¥ = 3,620</p>
+          </div>
+          <div className="pull-right">
+          </div>
+        </div>
+      )
+    }
+    return (
+      <div className="container">
+        <div className="pull-left">
+          <div style={ headerStyles.headerLiStyles }>
+            <FaUser style={headerStyles.headerIconStyles}/>
+            <Link to="member/profile" >
+								Xin chào,
+              <span className="red"><b>chaobanhnguyen</b></span>
+            </Link>
+            |
+            <Link onClick={handleLogout}>Thoát</Link>
+          </div>
+
+        </div>
+
+        <div className="pull-left">
+          <div style={ headerStyles.headerLiStyles }>
+            <FaCreditCard style={headerStyles.headerIconStyles}/>
+            <Link to="member/wallet">
+							Số dư khả dụng: <span className="num_icon">0</span> VNĐ
+            </Link>
+          </div>
+        </div>
+        <div className="pull-left" style={{ marginTop: '3px' }}>
+          <p className="ty_gia">Tỷ giá: 1¥ = 3,625</p>
+        </div>
+        <div className="pull-right">
+          <div className="pull-left">
+          </div>
+          <div className="pull-right" >
+            <div style={{ display: 'flex', alignItems: 'center', padding:'10px' }}>
+              <FaShoppingCart style={headerStyles.headerIconStyles}/>
+              <Link to="cart" style={{ marginRight:'10px' }}> Giỏ hàng <span className="num_icon">0</span></Link>
+              <FaBus style={headerStyles.headerIconStyles}/>
+              <Link to="ship-orders" style={{ marginRight:'10px' }}> Giỏ hàng ký gửi</Link>
+              <FaBell style={headerStyles.headerIconStyles}/>
+              <Link>Thông báo </Link>
+              <span className="num_icon" >0</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    )
+  }
+
+  const links = {
+    ordersArray : [
+      { to: 'order/add-orders', label: 'Tạo đơn hàng' },
+      { to: 'order/pending-orders', label: 'Đang chờ cọc' },
+      { to: 'order/list-orders', label: 'Toàn bộ đơn hàng' },
+      { to: 'ship-orders/list-ship-orders', label: 'Đơn hàng ký gửi' },
+      { to: 'ship-orders/list-ship-ids', label: 'DS vận đơn ký gửi' },
+      { to: 'storevn/delivery-note', label: 'DS phiếu giao hàng KG' },
+      { to: 'complain/list-complains', label: 'Khiếu nại' },
+      { to: 'member/reduces', label: 'Giảm trừ đơn hàng' }
+    ],
+    memberArray : [
+      { to: 'member/profile', label: 'Thông tin cá nhân' },
+      { to: 'member/change-password', label: 'Đổi mật khẩu' }
+    ],
+    shipArray: [
+      { to: 'ship/transport', label: 'Danh sách kiện' },
+      { to: 'ship/finship', label: 'Tra cứu kiện hàng' },
+      { to: 'member/domestic-shipping', label: 'Phí VC nội địa' }
+    ],
+    financeArray: [
+      { to: 'member/wallet', label: 'Danh sách kiện' },
+      { to: 'member/deposit', label: 'Tra cứu kiện hàng' }
+    ]
+  }
 
   const renderNavbar = () => {
     if (user == null) {
       return (
         <>
-          <li style={{ display: 'flex', alignItems: 'center' }}>
-            {/* <i className="fa fa-sign-in" aria-hidden="true"></i> */}
-            <FaSignInAlt style={{ color: 'white', fontSize: '20px', marginRight: '2px' }} />
+          <li style={ navbarStyles.navbarLiStyle }>
+            <FaSignInAlt style={navbarStyles.navbarIconStyles} />
             <Link to='login' >Đăng nhập</Link>
           </li>
-          <li style={{ display: 'flex', alignItems: 'center' }}>
-            {/* <i className="fa fa-user-plus" aria-hidden="true"></i> */}
-            <FaUserPlus style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
+          <li style={ navbarStyles.navbarLiStyle }>
+            <FaUserPlus style={navbarStyles.navbarIconStyles}/>
             <Link to='register' >Đăng ký</Link>
           </li>
         </>
@@ -26,52 +158,69 @@ const ExtraHeader = () => {
     } else {
       return (
         <>
-          <li className="dropdown">
-            {/* <i className="fa fa-file-text"></i> */}
-            <FaFile style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
-            <a href="https://my.orderhangquangchau.com/order/lists">Đơn hàng</a>
+          <li className="dropdown" style={ navbarStyles.navbarLiStyle }>
+            <FaFile style={navbarStyles.navbarIconStyles}/>
+            <Link to="order/list-orders">Đơn hàng</Link>
             <span className="caret"></span>
             <ul className="dropdown-menu">
-              <li><a href="https://my.orderhangquangchau.com/order/addorders">Tạo đơn hàng</a></li>
-              <li><a href="https://my.orderhangquangchau.com/order/pending">Đang chờ cọc</a></li>
-              <li><a href="https://my.orderhangquangchau.com/order/lists">Toàn bộ đơn hàng</a></li>
-              <li><a href="https://my.orderhangquangchau.com/shipOrder/lists">Đơn hàng ký gửi</a></li>
-              <li><a href="/ShipOrder/listshipids">DS vận đơn ký gửi</a></li>
-              <li><a href="/storevn/delivery_note">DS phiếu giao hàng KG</a></li>
-              <li><a href="https://my.orderhangquangchau.com/complain/lists">Khiếu nại</a></li>
-              <li><a href="https://my.orderhangquangchau.com/member/reduces">Giảm trừ đơn hàng</a></li>
+              {
+                Object.keys(links)?.length > 0 &&
+                links.ordersArray?.length > 0 &&
+                links.ordersArray.map((value, index) => (
+                  <li key={index}>
+                    <Link to={value?.to}>{value?.label}</Link>
+                  </li>
+                ))
+              }
             </ul>
           </li>
-          <li className="dropdown">
-            {/* <i className="fa fa-archive" aria-hidden="true"></i> */}
-            <FaArchive style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
-            <a href="https://my.orderhangquangchau.com/ship/transport">Kiện hàng</a>
+          <li className="dropdown" style={ navbarStyles.navbarLiStyle }>
+            <FaArchive style={navbarStyles.navbarIconStyles}/>
+            <Link to="ship/transport">Kiện hàng</Link>
             <span className="caret"></span>
             <ul className="dropdown-menu">
-              <li><a href="https://my.orderhangquangchau.com/ship/transport">Danh sách kiện</a></li>
-              <li><a href="https://my.orderhangquangchau.com/ship/finship">Tra cứu kiện hàng</a></li>
-              <li><a href="https://my.orderhangquangchau.com/member/shipndvn">Phí VC nội địa</a></li>
+              {
+                Object.keys(links).length > 0 &&
+                links.shipArray?.length > 0 &&
+                links.shipArray.map((value, index) => (
+                  <li key={index}>
+                    <Link to={value?.to}>{value?.label}</Link>
+                  </li>
+                ))
+              }
             </ul>
           </li>
-          <li className="dropdown">
-            {/* <i className="fa fa-money" aria-hidden="true"></i> */}
-            <FaMoneyBill style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
-            <a href="https://my.orderhangquangchau.com/member/wallet">Tài chính</a>
+          <li className="dropdown" style={ navbarStyles.navbarLiStyle }>
+            <FaMoneyBill style={navbarStyles.navbarIconStyles}/>
+            <Link to="member/wallet">Tài chính</Link>
             <span className="caret"></span>
             <ul className="dropdown-menu">
-              <li><a href="https://my.orderhangquangchau.com/member/wallet">Xem giao dịch</a></li>
-              <li><a href="https://my.orderhangquangchau.com/member/deposit">Nạp tiền</a></li>
+              {
+                Object.keys(links).length > 0 &&
+                links.financeArray?.length > 0 &&
+                links.financeArray.map((value, index) => (
+                  <li key={index}>
+                    <Link to={value?.to}>{value?.label}</Link>
+                  </li>
+                ))
+              }
             </ul>
           </li>
-          <li className="dropdown">
-            {/* <i className="fa fa-user" aria-hidden="true"></i> */}
-            <FaUser style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
-            <a href="https://my.orderhangquangchau.com/member/profile">Tài khoản</a>
+          <li className="dropdown" style={ navbarStyles.navbarLiStyle }>
+            <FaUser style={navbarStyles.navbarIconStyles}/>
+            <Link to="member/profile">Tài khoản</Link>
             <span className="caret"></span>
             <ul className="dropdown-menu">
-              <li><a href="https://my.orderhangquangchau.com/member/profile">Thông tin cá nhân</a></li>
-              <li><a href="https://my.orderhangquangchau.com/member/changepass">Đổi mật khẩu</a></li>
-              <li><a href="https://my.orderhangquangchau.com/member/loggout">Đăng xuất</a></li>
+              {
+                Object.keys(links).length > 0 &&
+                links.memberArray?.length > 0 &&
+                links.memberArray.map((value, index) => (
+                  <li key={index}>
+                    <Link to={value?.to}>{value?.label}</Link>
+                  </li>
+                ))
+              }
+              <li><Link onClick={handleLogout}>Đăng xuất</Link></li>
             </ul>
           </li>
         </>
@@ -81,13 +230,7 @@ const ExtraHeader = () => {
   return (
     <>
       <div className="top_header">
-        <div className="container">
-          <div className="pull-left">
-            <p className="ty_gia">Tỷ giá: 1¥ = 3,620</p>
-          </div>
-          <div className="pull-right">
-          </div>
-        </div>
+        {renderHeader()}
       </div>
 
       <header>
@@ -152,19 +295,16 @@ const ExtraHeader = () => {
 
 
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <i className="fa fa-hospital-o"></i> */}
                   <FaHospital style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
-                  <a target="_blank" rel="noreferrer" href="http://orderhangquangchau.com/order-hang-taobao-gia-re/">Bảng giá</a>
+                  <Link target="_blank" rel="noreferrer" to="/bang-gia">Bảng giá</Link>
                 </li>
 
 
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <i className="fa fa-credit-card"></i> */}
                   <FaCreditCard style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
                   <a target="_blank" rel="noreferrer" href="http://orderhangquangchau.com/dat-hang-taobao.html">Thông tin thanh toán</a>
                 </li>
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
-                  {/* <i className="fa fa-star"></i> */}
                   <FaStar style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
                   <Link to='shop' >Shop uy tín</Link>
                 </li>
@@ -180,3 +320,5 @@ const ExtraHeader = () => {
 }
 
 export default ExtraHeader
+
+

@@ -4,8 +4,8 @@ import IC16 from '../../assets/ic16.png'
 const ExtraFooter = () => {
   return (
     <>
-      <footer>
-        <div className="container">
+      <footer style={{ overflow:'hidden' }}>
+        <div className="container" style={{ padding: '0px 5px' }}>
           <div className="col1">
             <h4>ĐỊA CHỈ LIÊN HỆ</h4>
             <h5>Hà Nội</h5>
@@ -18,7 +18,7 @@ const ExtraFooter = () => {
             <span className="address">78/23 Ba Vân, P14, Quận Tân Bình - TPHCM</span>
             <span className="phone">0902.632.512</span>
           </div>
-          <div className="col2">
+          <div className="col2" >
             <h4>THÔNG TIN CHUYỂN KHOẢN</h4>
             <ul>
               <li>
@@ -60,7 +60,7 @@ const ExtraFooter = () => {
               </li>
             </ul>
           </div>
-          <div className="col3">
+          <div className="col3" >
             <h4>FANPAGE ORDER HÀNG TRUNG QUỐC</h4>
             <div className="likefb">
               <div className="fb-like-box fb_iframe_widget" data-href="https://www.facebook.com/orderhangquangchau24h/" data-width="340" data-height="333" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=1869996503282359&amp;color_scheme=light&amp;container_width=340&amp;header=false&amp;height=333&amp;href=https%3A%2F%2Fwww.facebook.com%2Forderhangquangchau24h%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=340"><span style= {{ verticalAlign: 'bottom', width: '0px', height: '0px' }}><iframe name="f29a45ea172bd2ac7" width="340px" height="333px" data-testid="fb:like_box Facebook Social Plugin" title="fb:like_box Facebook Social Plugin" frameBorder="0" allowtransparency="true" allowFullScreen="true" scrolling="no" allow="encrypted-media" src="https://www.facebook.com/v2.9/plugins/like_box.php?app_id=1869996503282359&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fx%2Fconnect%2Fxd_arbiter%2F%3Fversion%3D46%23cb%3Dfa4f00cc82151243f%26domain%3Dmy.orderhangquangchau.com%26is_canvas%3Dfalse%26origin%3Dhttp%253A%252F%252Fmy.orderhangquangchau.com%252Ffe328742d44f7dd97%26relation%3Dparent.parent&amp;color_scheme=light&amp;container_width=340&amp;header=false&amp;height=333&amp;href=https%3A%2F%2Fwww.facebook.com%2Forderhangquangchau24h%2F&amp;locale=vi_VN&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=340" style = {{ border: 'none', visibility: 'visible', width: '0px', height: '0px' }} className=""></iframe></span></div>

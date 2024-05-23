@@ -22,12 +22,6 @@ const Wallet = () => {
                   <p className="black">Tổng tiền hàng đã về chờ tất toán : <span className="red">0</span> đ </p>
                   <p className="black">Tổng tiền hàng chưa về : <span className="red">0</span> đ </p>
                   <p><a className="blue" target="_blank" rel="noreferrer" href="https://my.orderhangquangchau.com/member/reportowe">Xem chi tiết</a></p></div>
-
-                {/* <script>
-						$(document).ready(function(){
-							showCustomerOwe();
-						});
-					</script> */}
                 <span className="custom_bt active"><i className="fa fa-file-text fa-2x" aria-hidden="true"></i> Chi tiết giao dịch</span>
                 <a className="custom_bt" href="https://my.orderhangquangchau.com/member/deposit"><i className="fa fa-credit-card fa-2x" aria-hidden="true"></i> Nạp tiền</a>
               </div>

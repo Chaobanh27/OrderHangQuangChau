@@ -1,3 +1,9 @@
+html {
+    background-color: white !important;
+}
+
+
+
 a[href^=tel] {
 color : inherit;
 text-decoration: none;
