@@ -14,3 +14,6 @@
 .customHoverPreview:hover .slider .flickity-prev-next-button{
     opacity: 1;
 }
+.button, button, input[type=submit], input[type=reset], input[type=button] {
+    margin-right: 0 !important;
+}

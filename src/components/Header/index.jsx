@@ -18,22 +18,23 @@ const Header = () => {
   const [isHovered, setIsHovered] = useState(false)
   const [code, SetCode] = useState("")
 
-  const handleMouseEnter = () => setIsHovered(true)
-  const handleMouseLeave = () => setIsHovered(false)
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+  const navigation = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
-        setShowNav(true)
+        setShowNav(true);
       } else {
-        setShowNav(false)
+        setShowNav(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
       <div class="mfp-bg off-canvas off-canvas-left main-menu-overlay mfp-ready" style= {{ height: '6294px', position: 'absolute' }}></div>
@@ -276,6 +277,7 @@ const Header = () => {
                     method="post"
                     className="header_form_tracking"
                     id=""
+                    className=""
                   >
                     <input
                       type="text"
@@ -429,4 +431,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;
