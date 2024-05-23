@@ -1,6 +1,14 @@
 /* eslint-disable quotes */
 import { useEffect, useState } from "react";
 import "../Header/index.css";
+import { IoMailOpenOutline } from "react-icons/io5";
+import { FaPhone } from "react-icons/fa6";
+import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
+import { IoIosCart } from "react-icons/io";
+import { IoSearch } from "react-icons/io5";
+
+import { IoIosLock } from "react-icons/io";
+import { ImUser } from "react-icons/im";
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -32,7 +40,11 @@ const Header = () => {
             <div className="flex-col hide-for-medium flex-left">
               <ul className="nav nav-left medium-nav-center nav-small  nav-divided">
                 <li className="html custom html_topbar_right">
-                  <img width="30" src="/wp-content/uploads/tien-te.png"></img>
+                  <img
+                    width="30"
+                    style={{ marginRight: "4px" }}
+                    src="https://orderhangquangchau.com/wp-content/uploads/tien-te.png"
+                  ></img>
                   Tỉ giá: : 3620
                 </li>
                 <li className="header-contact-wrapper">
@@ -46,10 +58,13 @@ const Header = () => {
                         className="tooltip"
                         title="orderhang89@gmail.com"
                       >
-                        <i
-                          className="icon-envelop"
-                          style={{ fontSize: "16px" }}
-                        ></i>{" "}
+                        <IoMailOpenOutline
+                          style={{
+                            fontSize: "16px",
+                            color: "#fff",
+                            marginRight: "4px",
+                          }}
+                        />
                         <span>orderhang89@gmail.com </span>
                       </a>
                     </li>
@@ -60,10 +75,7 @@ const Header = () => {
                         className="tooltip"
                         title="0971.243.666"
                       >
-                        <i
-                          className="icon-phone"
-                          style={{ fontSize: "16px" }}
-                        ></i>
+                        <FaPhone style={{ marginRight: "4px" }} />
                         <span>0971.243.666</span>
                       </a>
                     </li>
@@ -83,28 +95,28 @@ const Header = () => {
                     <li>
                       <a
                         target="_blank"
-                        href="http://my.orderhangquangchau.com/register"
+                        href="http://localhost:5173/dashboard/register"
                         rel="noreferrer"
                       >
-                        <i className="icon-user"></i> Đăng ký
+                        <ImUser /> Đăng ký
                       </a>
                     </li>
                     <li>
                       <a
                         target="_blank"
-                        href="http://my.orderhangquangchau.com/login"
+                        href="http://localhost:5173/dashboard/login"
                         rel="noreferrer"
                       >
-                        <i className="icon-lock"></i> Đăng nhập
+                        <IoIosLock /> Đăng nhập
                       </a>
                     </li>
                     <li>
                       <a
                         target="_blank"
-                        href="https://my.orderhangquangchau.com/cart"
+                        href="http://localhost:5173/dashboard/cart"
                         rel="noreferrer"
                       >
-                        <i className="icon-shopping-cart"></i> Giỏ hàng
+                        <IoIosCart /> Giỏ hàng
                       </a>
                     </li>
                   </ul>
@@ -119,28 +131,28 @@ const Header = () => {
                     <li>
                       <a
                         target="_blank"
-                        href="http://my.orderhangquangchau.com/register"
+                        href="http://localhost:5173/dashboard/register"
                         rel="noreferrer"
                       >
-                        <i className="icon-user"></i> Đăng ký
+                        <ImUser /> Đăng ký
                       </a>
                     </li>
                     <li>
                       <a
                         target="_blank"
-                        href="http://my.orderhangquangchau.com/login"
+                        href="http://localhost:5173/dashboard/login"
                         rel="noreferrer"
                       >
-                        <i className="icon-lock"></i> Đăng nhập
+                        <IoIosLock /> Đăng nhập
                       </a>
                     </li>
                     <li>
                       <a
                         target="_blank"
-                        href="https://my.orderhangquangchau.com/cart"
+                        href="http://localhost:5173/dashboard/cart"
                         rel="noreferrer"
                       >
-                        <i className="icon-shopping-cart"></i> Giỏ hàng
+                        <IoIosCart /> Giỏ hàng
                       </a>
                     </li>
                   </ul>
@@ -219,7 +231,7 @@ const Header = () => {
                     placeholder="Nhập mã vận đơn cần tra cứu"
                   ></input>
                   <button type="submit" id="" className="">
-                    <i className="icon-search"></i>
+                    <IoSearch />
                   </button>
                 </form>
               </div>
@@ -250,14 +262,14 @@ const Header = () => {
                     href="http://localhost:5173/bang-gia"
                     className="nav-top-link"
                   >
-                    Bảng giá<i className="icon-angle-down"></i>
+                    Bảng giá <IoChevronDownOutline />
                   </a>
                   <ul className="sub-menu nav-dropdown nav-dropdown-default">
                     <li
                       id="menu-item-1194"
                       className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1194"
                     >
-                      <a href="https://orderhangquangchau.com/bang-gia">
+                      <a href="http://localhost:5173/bang-gia">
                         Bảng giá dịch vụ đặt hàng Trung Quốc
                       </a>
                     </li>
@@ -265,7 +277,7 @@ const Header = () => {
                       id="menu-item-1195"
                       className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1195"
                     >
-                      <a href="https://orderhangquangchau.com/bang-gia-ky-gui-hang.html">
+                      <a href="http://localhost:5173/bang-gia-ky-gui-hang">
                         Bảng giá ký gửi vận chuyển
                       </a>
                     </li>
@@ -273,7 +285,7 @@ const Header = () => {
                       id="menu-item-1196"
                       className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1196"
                     >
-                      <a href="https://orderhangquangchau.com/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung.html">
+                      <a href="http://localhost:5173/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung">
                         Bảng giá dịch vụ chuyển tiền
                       </a>
                     </li>
@@ -354,7 +366,7 @@ const Header = () => {
                       placeholder="Nhập mã vận đơn cần tra cứu"
                     ></input>
                     <button type="submit" id="" className="">
-                      <i className="icon-search"></i>
+                      <IoSearch />
                     </button>
                   </form>
                 </div>
