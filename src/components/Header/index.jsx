@@ -11,7 +11,7 @@ import { FaBars } from "react-icons/fa6"
 
 import { IoIosLock } from "react-icons/io"
 import { ImUser } from "react-icons/im"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 const Header = () => {
   const [showNav, setShowNav] = useState(false)
   // nút scrollTo
@@ -20,7 +20,7 @@ const Header = () => {
 
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
-  const navigation = useNavigate();
+  const navigation = useNavigate()
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
@@ -277,7 +277,6 @@ const Header = () => {
                     method="post"
                     className="header_form_tracking"
                     id=""
-                    className=""
                   >
                     <input
                       type="text"
