@@ -1,7 +1,12 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unknown-property */
+import { DatePicker } from 'antd'
 
 
 const Reduces = () => {
+  const onChange = (date, dateString) => {
+    console.log(date, dateString)
+  }
   return (
     <>
       <div class="col-sm-9">
@@ -24,8 +29,11 @@ const Reduces = () => {
               <form class="form-horizontal" method="get">
 				Mã giảm trừ : <input class="custom_input" type="text" name="filter_id" value="" fdprocessedid="bucrqp" />
 				Mã đơn hàng : <input class="custom_input" type="text" name="filter_invoiceid" value="" fdprocessedid="xpy7xr" /><br/> <div class="space10"></div>
-				Từ ngày : <input class="pickdate_from custom_input hasDatepicker" type="text" id="datepicker_from" name="filter_startdate_create_date" value="" fdprocessedid="rujc3u" />
-				Đến ngày : <input class="pickdate_to custom_input hasDatepicker" type="text" id="datepicker_to" name="filter_enddate_create_date" value="" fdprocessedid="sph7a" />
+				Từ ngày :
+                <DatePicker onChange={onChange} needConfirm />
+				Đến ngày :
+                <DatePicker onChange={onChange} needConfirm />
+
                 <input class="button custom_flat_button" type="submit" value="Lọc" fdprocessedid="29t4le" />
               </form>
               <div class="space10"></div>

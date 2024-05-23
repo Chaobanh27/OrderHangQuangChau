@@ -1,6 +1,17 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unknown-property */
+import { FaCalendar } from 'react-icons/fa'
+import { DatePicker } from 'antd'
+import { AiFillDashboard } from 'react-icons/ai'
+import { LuRefreshCw } from 'react-icons/lu'
+import { FaSearch } from 'react-icons/fa'
 
 const ListShipOrders = () => {
+
+  const onChange = (date, dateString) => {
+    console.log(date, dateString)
+  }
+
   return (
     <>
       <section className="content">
@@ -8,7 +19,9 @@ const ListShipOrders = () => {
           <section className="content-header">
             <h1> Danh sách đơn hàng ký gửi</h1>
             <ol className="breadcrumb">
-              <li><a href="/dashboard"><i className="fa fa-dashboard"></i> Trang chủ </a></li>
+              <li><a href="/dashboard">
+                <AiFillDashboard/>
+                Trang chủ </a></li>
               <li><a>Quản lý nhập hàng</a></li>
               <li className="active">Danh sách đơn hàng ký gửi</li>
             </ol>
@@ -36,9 +49,9 @@ const ListShipOrders = () => {
                               <div className="form-group">
                                 <div className="input-group date">
                                   <div className="input-group-addon">
-                                    <i className="fa fa-calendar"></i>
+                                    <FaCalendar/>
                                   </div>
-                                  <input className="pickdate_from form-control pull-right hasDatepicker" type="text" id="datepicker_from" value="" name="filter_startdate_create_date" fdprocessedid="7z52r" />
+                                  <DatePicker onChange={onChange} needConfirm />
                                 </div>
                               </div>
                             </li>
@@ -46,18 +59,17 @@ const ListShipOrders = () => {
                               <div className="form-group">
                                 <div className="input-group date">
                                   <div className="input-group-addon">
-                                    <i className="fa fa-calendar"></i>
+                                    <FaCalendar/>
                                   </div>
-                                  <input className="pickdate_to form-control pull-right hasDatepicker" type="text" id="datepicker_to" value="" name="filter_enddate_create_date" fdprocessedid="cijcexe" />
-
+                                  <DatePicker onChange={onChange} needConfirm />
                                 </div>
                               </div>
                             </li>
                             <li className="col-md-3 col-xs-12">
                               <div className="form-group">
-                                <button type="submit" ng-click="self.search(dataSearch, 0)" className="btn btn-info btn-seach-package" fdprocessedid="mziih9"><span className="glyphicon glyphicon-search"></span> Lọc
+                                <button type="submit" ng-click="self.search(dataSearch, 0)" className="btn btn-info btn-seach-package" fdprocessedid="mziih9"><FaSearch/> Lọc
                                 </button>
-                                <a href="/shiporder/lists" className="btn btn-default"><i className="glyphicon glyphicon-refresh"></i> Làm lại</a>
+                                <a href="/shiporder/lists" className="btn btn-default"><LuRefreshCw /> Làm lại</a>
                               </div>
                             </li>
 

@@ -1,6 +1,27 @@
 /* eslint-disable react/no-unknown-property */
+import { FaLocationDot } from 'react-icons/fa6'
+import { Button, Modal } from 'antd'
+import { useState } from 'react'
 
 const AddOrders = () => {
+  const [isAddAddressOpen, setIsAddAddressOpen] = useState(false)
+  const [isUploadImageOpen, setIsUploadImageOpen] = useState(false)
+
+  const showAddAddressModal = () => {
+    setIsAddAddressOpen(true)
+  }
+  const handleAddAddressCancel = () => {
+    setIsAddAddressOpen(false)
+  }
+
+  const showUploadImageModal = () => {
+    setIsUploadImageOpen(true)
+  }
+  const handleUploadImageCancel = () => {
+    setIsUploadImageOpen(false)
+  }
+
+
   return (
     <>
       <div className="col-sm-12">
@@ -17,11 +38,58 @@ const AddOrders = () => {
                   <div className="row">
                     <div className="col-md-12">
                       <div className="customer_address row gray_box padding20">
-                        <h4><i className="fa fa-map-marker"></i> Địa chỉ nhận hàng</h4>
+                        <h4><FaLocationDot/> Địa chỉ nhận hàng</h4>
                         <div id="list_address">
                         </div>
                         <div className="">
-                          <a onClick="openPopup('https://my.orderhangquangchau.com/member/addAddress',{},600,500)" className="btn bg_yellow popup_link">Thêm mới địa chỉ</a>
+                          <Button onClick={showAddAddressModal} className="btn bg_yellow popup_link">Thêm mới địa chỉ</Button>
+                          <Modal open={isAddAddressOpen} onCancel={handleAddAddressCancel} footer={null}>
+                            <div class="w2ui-box1" style= {{ bottom: '0px !important' }}>
+                              <div class="w2ui-msg-body w2ui-msg-no-buttons">
+                                <div rel="title" class="title">
+                                Thêm mới địa chỉ nhận hàng
+                                </div>
+                                <div rel="body" class="contentPopup" style= {{ padding: '20px' }}>
+                                  <div id="response_ajax"></div>
+                                  <form name="changesupport" action="" class="align-center ajaxForm Support" method="POST">
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" name="receiver_name" placeholder="Tên người nhận" value="" required="" fdprocessedid="6q8if5" />
+                                    </div>
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" name="receiver_phone" placeholder="Số ĐT người nhận" value="" required="" fdprocessedid="dovypg" />
+                                    </div>
+                                    <div class="form-group">
+                                      <input type="text" class="form-control" name="fulladdress" placeholder="Địa chỉ người nhận" value="" required="" fdprocessedid="shhts" />
+                                    </div>
+                                    <div class="form-group">
+                                      <select name="store" class="form-control" required="" onchange="loadSubStore(this.value)" fdprocessedid="appi9n">
+                                        <option value="">Vị trí kho hàng việt nam</option>
+                                        <option value="0">Hà Nội</option>
+                                        <option value="1">Sài Gòn</option>
+                                        <option value="2">Đà Nẵng</option>
+                                        <option value="3">Quảng Nam</option>
+                                      </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <select id="sub_store" name="sub_store" class="form-control" required="" fdprocessedid="4pb219">
+                                        <option value="">Bạn cần chọn Vị trí kho hàng</option>
+                                      </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                      <input type="submit" class="btn btn-danger" name="save" value="Lưu" fdprocessedid="42r2z8" />
+                                    </div>
+                                    {/* <input type="hidden" name="address_id" value="0">
+                                        <input type="hidden" name="is_reload" value="1">
+                                        <input type="hidden" name="cid" value="">
+                                        <input type="hidden" name="controller" value="member">
+                                        <input type="hidden" name="task" value="addNewAddress"> */}
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </Modal>
                         </div>
                       </div>
 
@@ -48,9 +116,19 @@ const AddOrders = () => {
                           <div id="col_image" style= {{ width:'100%', float:'left', marginBottom: '5px' }}>
                             <img id="itemimage" width="50px" height="50px" />
                             <input id="txtitemimage" name="txtitemimage" type="hidden" />
-                            <button className="link_ajax btn-link" onclick="openPopupNew('https://my.orderhangquangchau.com/order/uploadimagesitem',{orderid:1716220263},600,400)" fdprocessedid="xmkl7c">
-                              <b>Tải ảnh</b>
-                            </button>
+                            <Button onClick={showUploadImageModal} className="btn bg_yellow popup_link">Tải ảnh</Button>
+                            <Modal open={isUploadImageOpen} onCancel={handleUploadImageCancel} footer={null}>
+                              <form action="https://my.orderhangquangchau.com/S3uploadfile/addImagesOrders" method="POST" enctype="multipart/form-data" class="direct-upload">
+                                <center><h1>Upload ảnh</h1></center>
+                                <input type="hidden" value="6709" name="cid" />
+                                <input type="hidden" value="6709_1716490081" name="idupload" />
+
+                                <input type="file" name="files" accept="image/png, image/jpeg" id="imgInp" />
+
+                                <input type="hidden" name="Content-Type" />
+                                <div class="progress-bar-area"></div>
+                              </form>
+                            </Modal>
                           </div>
                           <div style= {{ marginBottom: '5px' }}><input name="itemname" id="itemname" value="" placeholder="Tên sản phẩm" className="form-control" fdprocessedid="4cu1nt" /></div>
 

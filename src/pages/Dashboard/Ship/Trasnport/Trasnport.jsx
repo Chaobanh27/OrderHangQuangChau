@@ -1,6 +1,11 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unknown-property */
+import { DatePicker } from 'antd'
 
 const Trasnport = () => {
+  const onChange = (date, dateString) => {
+    console.log(date, dateString)
+  }
   return (
     <>
       <div class="col-sm-12">
@@ -24,8 +29,10 @@ const Trasnport = () => {
                 <option value="dg">Đã Giao</option>
               </select>
               <div class="space10"></div>
-				Từ ngày : <input class="pickdate_from custom_input hasDatepicker" type="text" id="datepicker_from" name="filter_startdate_created_date" value="" fdprocessedid="rgcs38" />
-				Đến ngày : <input class="pickdate_to custom_input hasDatepicker" type="text" id="datepicker_to" name="filter_enddate_created_date" value="" fdprocessedid="jzimpk" />
+				Từ ngày :
+              <DatePicker onChange={onChange} needConfirm />
+				Đến ngày :
+              <DatePicker onChange={onChange} needConfirm />
 				Tìm ngày tháng của trạng thái
               <select name="date_status" fdprocessedid="0t86ij">
                 <option value="nbph">NB Phát hàng</option>

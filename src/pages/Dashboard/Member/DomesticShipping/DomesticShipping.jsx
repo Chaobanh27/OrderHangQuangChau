@@ -1,6 +1,11 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unknown-property */
+import { DatePicker } from 'antd'
 
 const DomesticShipping = () => {
+  const onChange = (date, dateString) => {
+    console.log(date, dateString)
+  }
   return (
     <>
       <div class="col-sm-9">
@@ -14,8 +19,10 @@ const DomesticShipping = () => {
             <div class="tab_content">
               <div class="space10"></div>
               <form class="form-horizontal" method="get">
-				Từ ngày : <input class="pickdate_from custom_input hasDatepicker" type="text" id="datepicker_from" name="filter_startdate_create_date" value="" fdprocessedid="doz6sj" />
-				Đến ngày : <input class="pickdate_to custom_input hasDatepicker" type="text" id="datepicker_to" name="filter_enddate_create_date" value="" fdprocessedid="2duaqj" />
+				Từ ngày :
+                <DatePicker onChange={onChange} needConfirm />
+				Đến ngày :
+                <DatePicker onChange={onChange} needConfirm />
 				Trạng thái
                 <select name="filter_status" class="custom_input" fdprocessedid="u5w7c9">
                   <option value="">Tất cả</option>

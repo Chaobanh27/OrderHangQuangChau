@@ -3,7 +3,8 @@ import { FaTachometerAlt, FaShoppingCart, FaBus, FaSignInAlt, FaBell, FaUserPlus
 import { useDispatch, useSelector } from 'react-redux'
 // import { logoutUserAPI, selectCurrentUser } from '../../redux/user/userSlice'
 import { logout, selectCurrentUser } from '../../redux/user/userSlice'
-
+import { DownOutlined } from '@ant-design/icons'
+import { Dropdown, Space } from 'antd'
 
 const ExtraHeader = () => {
   const user = useSelector(selectCurrentUser)
@@ -27,6 +28,12 @@ const ExtraHeader = () => {
     localStorage.removeItem('user')
     navigate('login')
   }
+  const items = [
+    {
+      label: 'Không có thông báo nào mới',
+      key: '0'
+    }
+  ]
 
   const headerStyles = {
     headerIconStyles : {
@@ -112,7 +119,19 @@ const ExtraHeader = () => {
               <FaBus style={headerStyles.headerIconStyles}/>
               <Link to="ship-orders" style={{ marginRight:'10px' }}> Giỏ hàng ký gửi</Link>
               <FaBell style={headerStyles.headerIconStyles}/>
-              <Link>Thông báo </Link>
+              <Dropdown
+                menu={{
+                  items
+                }}
+                trigger={['click']}
+              >
+                <a onClick={(e) => e.preventDefault()} style={{ cursor: 'pointer' }}>
+                  <Space>
+                  Thông báo
+                    <DownOutlined />
+                  </Space>
+                </a>
+              </Dropdown>
               <span className="num_icon" >0</span>
             </div>
           </div>
@@ -143,8 +162,8 @@ const ExtraHeader = () => {
       { to: 'member/domestic-shipping', label: 'Phí VC nội địa' }
     ],
     financeArray: [
-      { to: 'member/wallet', label: 'Danh sách kiện' },
-      { to: 'member/deposit', label: 'Tra cứu kiện hàng' }
+      { to: 'member/wallet', label: 'Xem giao dịch' },
+      { to: 'member/deposit', label: 'Nạp tiền' }
     ]
   }
 
@@ -309,7 +328,7 @@ const ExtraHeader = () => {
 
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
                   <FaCreditCard style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
-                  <a target="_blank" rel="noreferrer" href="http://orderhangquangchau.com/dat-hang-taobao.html">Thông tin thanh toán</a>
+                  <Link target="_blank" rel="noreferrer" to="/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung">Thông tin thanh toán</Link>
                 </li>
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
                   <FaStar style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
