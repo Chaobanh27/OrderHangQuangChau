@@ -4,7 +4,19 @@ import "../HomePage/index.css";
 import { useEffect } from "react";
 import { IoStarOutline } from "react-icons/io5";
 import { IoChevronForward } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { useLocale } from "antd/es/locale";
 
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 const HomePage = () => {
   const [showNav, setShowNav] = useState(false);
 
@@ -21,7 +33,11 @@ const HomePage = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [window]);
+  const location = useLocale();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, [location.pathname]);
   return (
     <div>
       {/* class="home page-template page-template-page-blank
@@ -701,51 +717,53 @@ const HomePage = () => {
                       </p>
                       <div className="ux-menu stack stack-col justify-start ux-menu--divider-solid">
                         <div className="ux-menu-link flex menu-item">
-                          <a
+                          <Link
+                            to={"/bang-gia"}
                             className="ux-menu-link__link flex"
-                            href="https://orderhangquangchau.com/bang-gia"
                           >
                             <IoStarOutline />
                             <span className="ux-menu-link__text">
                               Bảng giá đặt hàng
                             </span>
-                          </a>
+                          </Link>
                         </div>
 
                         <div className="ux-menu-link flex menu-item">
-                          <a
+                          <Link
+                            to={"/bang-gia-ky-gui-hang"}
                             className="ux-menu-link__link flex"
-                            href="https://orderhangquangchau.com/bang-gia-ky-gui-hang.html"
                           >
                             <IoStarOutline />
                             <span className="ux-menu-link__text">
                               Bảng giá ký gửi vận chuyển
                             </span>
-                          </a>
+                          </Link>
                         </div>
 
                         <div className="ux-menu-link flex menu-item">
-                          <a
+                          <Link
+                            to={"/bang-gia-ky-gui-hang"}
                             className="ux-menu-link__link flex"
-                            href="https://orderhangquangchau.com/bang-gia-ky-gui-hang.html"
                           >
                             <IoStarOutline />
                             <span className="ux-menu-link__text">
                               Bảng giá vận chuyển hàng lô, hàng nặng
                             </span>
-                          </a>
+                          </Link>
                         </div>
 
                         <div className="ux-menu-link flex menu-item">
-                          <a
+                          <Link
+                            to={
+                              "/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung"
+                            }
                             className="ux-menu-link__link flex"
-                            href="https://orderhangquangchau.com/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung.html"
                           >
                             <IoStarOutline />
                             <span className="ux-menu-link__text">
                               Bảng giá dịch vụ chuyển tiền
                             </span>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -886,234 +904,269 @@ const HomePage = () => {
                         className="customHoverPreview row large-columns-3 medium-columns-1 small-columns-1 slider row-slider slider-nav-simple slider-nav-outside slider-nav-push"
                         data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'
                       >
-                        <div className="col post-item">
-                          <div className="col-inner">
-                            <a
-                              href="https://orderhangquangchau.com/thong-bao-lich-nghi-tet-am-lich-2024.html"
-                              className="plain"
-                            >
-                              <div className="box box-default box-text-bottom box-blog-post has-hover">
-                                <div className="box-image">
-                                  <div
-                                    className="image-cover"
-                                    style={{ paddingTop: "56.25%" }}
-                                  >
-                                    <img
-                                      loading="lazy"
-                                      decoding="async"
-                                      width="300"
-                                      height="200"
-                                      src="https://orderhangquangchau.com/wp-content/uploads/2024/01/tet-giap-thin-300x200.jpg"
-                                      className="attachment-medium size-medium wp-post-image"
-                                      alt=""
-                                      srcSet="https://orderhangquangchau.com/wp-content/uploads/2024/01/tet-giap-thin-300x200.jpg 300w, https://orderhangquangchau.com/wp-content/uploads/2024/01/tet-giap-thin.jpg 600w"
-                                      sizes="(max-width: 300px) 100vw, 300px"
-                                    />
+                        <Swiper
+                          // install Swiper modules
+                          modules={[Navigation, Pagination, Scrollbar, A11y]}
+                          spaceBetween={0}
+                          slidesPerView={3}
+                          breakpoints={{
+                            1200: {
+                              spaceBetween: 0,
+                              slidesPerView: 3,
+                              loop: true,
+                            },
+                            0: {
+                              spaceBetween: 0,
+                              slidesPerView: 1,
+                              loop: true,
+                            },
+                          }}
+                        >
+                          <SwiperSlide>
+                            <div className="col post-item">
+                              <div className="col-inner">
+                                <a
+                                  href="https://orderhangquangchau.com/bang-gia-ky-gui-hang.html"
+                                  className="plain"
+                                >
+                                  <div className="box box-default box-text-bottom box-blog-post has-hover">
+                                    <div className="box-text text-center">
+                                      <div className="box-text-inner blog-post-inner">
+                                        <h5 className="post-title is-large ">
+                                          Bảng giá ký gửi hàng
+                                        </h5>
+                                        <div className="is-divider"></div>
+                                        <p className="from_the_blog_excerpt ">
+                                          BẢNG GIÁ KÝ GỬI VẬN CHUYỂN TRUNG QUỐC
+                                          &#8211; VIỆT NAM &nbsp; 1.Giá vận
+                                          chuyển [...]{" "}
+                                        </p>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="box-text-inner blog-post-inner">
-                                    <h5 className="post-title is-large ">
-                                      Thông báo lịch nghỉ Tết Âm Lịch 2024
-                                    </h5>
-                                    <div className="is-divider"></div>
-                                    <p className="from_the_blog_excerpt ">
-                                      Kính gửi Quý Khách hàng! Order hàng Quảng
-                                      Châu xin thông báo lịch nghỉ tết [...]{" "}
-                                    </p>
-                                  </div>
-                                </div>
+                                </a>
                               </div>
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col post-item">
-                          <div className="col-inner">
-                            <a
-                              href="https://orderhangquangchau.com/uu-dai-giam-100-phi-dich-vu-nhan-dip-super-sales-11-11.html"
-                              className="plain"
-                            >
-                              <div className="box box-default box-text-bottom box-blog-post has-hover">
-                                <div className="box-image">
-                                  <div
-                                    className="image-cover"
-                                    style={{ paddingTop: "56.25%" }}
-                                  >
-                                    <img
-                                      loading="lazy"
-                                      decoding="async"
-                                      width="300"
-                                      height="200"
-                                      src="https://orderhangquangchau.com/wp-content/uploads/2023/11/Image-1-300x200.jpeg"
-                                      className="attachment-medium size-medium wp-post-image"
-                                      alt=""
-                                      srcSet="https://orderhangquangchau.com/wp-content/uploads/2023/11/Image-1-300x200.jpeg 300w, https://orderhangquangchau.com/wp-content/uploads/2023/11/Image-1-1024x683.jpeg 1024w, https://orderhangquangchau.com/wp-content/uploads/2023/11/Image-1-768x512.jpeg 768w, https://orderhangquangchau.com/wp-content/uploads/2023/11/Image-1.jpeg 1200w"
-                                      sizes="(max-width: 300px) 100vw, 300px"
-                                    />
+                            </div>
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <div className="col post-item">
+                              <div className="col-inner">
+                                <a
+                                  href="https://orderhangquangchau.com/uu-dai-giam-100-phi-dich-vu-nhan-dip-super-sales-11-11.html"
+                                  className="plain"
+                                >
+                                  <div className="box box-default box-text-bottom box-blog-post has-hover">
+                                    <div className="box-image">
+                                      <div
+                                        className="image-cover"
+                                        style={{ paddingTop: "56.25%" }}
+                                      >
+                                        <img
+                                          loading="lazy"
+                                          decoding="async"
+                                          width="300"
+                                          height="200"
+                                          src="https://orderhangquangchau.com/wp-content/uploads/2023/11/Image-1-300x200.jpeg"
+                                          className="attachment-medium size-medium wp-post-image"
+                                          alt=""
+                                          srcSet="https://orderhangquangchau.com/wp-content/uploads/2023/11/Image-1-300x200.jpeg 300w, https://orderhangquangchau.com/wp-content/uploads/2023/11/Image-1-1024x683.jpeg 1024w, https://orderhangquangchau.com/wp-content/uploads/2023/11/Image-1-768x512.jpeg 768w, https://orderhangquangchau.com/wp-content/uploads/2023/11/Image-1.jpeg 1200w"
+                                          sizes="(max-width: 300px) 100vw, 300px"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className="box-text text-center">
+                                      <div className="box-text-inner blog-post-inner">
+                                        <h5 className="post-title is-large ">
+                                          ƯU ĐÃI GIẢM 100% PHÍ DỊCH VỤ NHÂN DỊP
+                                          SUPER SALES 11/11
+                                        </h5>
+                                        <div className="is-divider"></div>
+                                        <p className="from_the_blog_excerpt ">
+                                          Một năm chỉ có duy nhất 1 ngày toàn
+                                          thể người dân Trung Quốc đều [...]
+                                        </p>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="box-text-inner blog-post-inner">
-                                    <h5 className="post-title is-large ">
-                                      ƯU ĐÃI GIẢM 100% PHÍ DỊCH VỤ NHÂN DỊP
-                                      SUPER SALES 11/11
-                                    </h5>
-                                    <div className="is-divider"></div>
-                                    <p className="from_the_blog_excerpt ">
-                                      Một năm chỉ có duy nhất 1 ngày toàn thể
-                                      người dân Trung Quốc đều [...]
-                                    </p>
-                                  </div>
-                                </div>
+                                </a>
                               </div>
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col post-item">
-                          <div className="col-inner">
-                            <a
-                              href="https://orderhangquangchau.com/1344.html"
-                              className="plain"
-                            >
-                              <div className="box box-default box-text-bottom box-blog-post has-hover">
-                                <div className="box-image">
-                                  <div
-                                    className="image-cover"
-                                    style={{ paddingTop: "56.25%" }}
-                                  >
-                                    <img
-                                      loading="lazy"
-                                      decoding="async"
-                                      width="300"
-                                      height="169"
-                                      src="https://orderhangquangchau.com/wp-content/uploads/2023/09/109035418_reutersshot-300x169.jpg"
-                                      className="attachment-medium size-medium wp-post-image"
-                                      alt=""
-                                      srcSet="https://orderhangquangchau.com/wp-content/uploads/2023/09/109035418_reutersshot-300x169.jpg 300w, https://orderhangquangchau.com/wp-content/uploads/2023/09/109035418_reutersshot.jpg 640w"
-                                      sizes="(max-width: 300px) 100vw, 300px"
-                                    />
+                            </div>
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <div className="col post-item">
+                              <div className="col-inner">
+                                <a
+                                  href="https://orderhangquangchau.com/1344.html"
+                                  className="plain"
+                                >
+                                  <div className="box box-default box-text-bottom box-blog-post has-hover">
+                                    <div className="box-image">
+                                      <div
+                                        className="image-cover"
+                                        style={{ paddingTop: "56.25%" }}
+                                      >
+                                        <img
+                                          loading="lazy"
+                                          decoding="async"
+                                          width="300"
+                                          height="169"
+                                          src="https://orderhangquangchau.com/wp-content/uploads/2023/09/109035418_reutersshot-300x169.jpg"
+                                          className="attachment-medium size-medium wp-post-image"
+                                          alt=""
+                                          srcSet="https://orderhangquangchau.com/wp-content/uploads/2023/09/109035418_reutersshot-300x169.jpg 300w, https://orderhangquangchau.com/wp-content/uploads/2023/09/109035418_reutersshot.jpg 640w"
+                                          sizes="(max-width: 300px) 100vw, 300px"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className="box-text text-center">
+                                      <div className="box-text-inner blog-post-inner">
+                                        <h5 className="post-title is-large "></h5>
+                                        <div className="is-divider"></div>
+                                        <p className="from_the_blog_excerpt ">
+                                          Kính gửi Quý khách hàng! Order hàng
+                                          Quảng Châu xin thông báo tới quý khách
+                                          [...]{" "}
+                                        </p>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="box-text-inner blog-post-inner">
-                                    <h5 className="post-title is-large "></h5>
-                                    <div className="is-divider"></div>
-                                    <p className="from_the_blog_excerpt ">
-                                      Kính gửi Quý khách hàng! Order hàng Quảng
-                                      Châu xin thông báo tới quý khách [...]{" "}
-                                    </p>
-                                  </div>
-                                </div>
+                                </a>
                               </div>
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col post-item">
-                          <div className="col-inner">
-                            <a
-                              href="https://orderhangquangchau.com/thong-bao-nghi-le-30-4-va-1-5.html"
-                              className="plain"
-                            >
-                              <div className="box box-default box-text-bottom box-blog-post has-hover">
-                                <div className="box-image">
-                                  <div
-                                    className="image-cover"
-                                    style={{ paddingTop: "56.25%" }}
-                                  >
-                                    <img
-                                      loading="lazy"
-                                      decoding="async"
-                                      width="300"
-                                      height="163"
-                                      src="https://orderhangquangchau.com/wp-content/uploads/2023/04/lich-nghi-le1-30-4-06-300x163.jpg"
-                                      className="attachment-medium size-medium wp-post-image"
-                                      alt=""
-                                      srcSet="https://orderhangquangchau.com/wp-content/uploads/2023/04/lich-nghi-le1-30-4-06-300x163.jpg 300w, https://orderhangquangchau.com/wp-content/uploads/2023/04/lich-nghi-le1-30-4-06-768x419.jpg 768w, https://orderhangquangchau.com/wp-content/uploads/2023/04/lich-nghi-le1-30-4-06.jpg 1024w"
-                                      sizes="(max-width: 300px) 100vw, 300px"
-                                    />
+                            </div>
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <div className="col post-item">
+                              <div className="col-inner">
+                                <a
+                                  href="https://orderhangquangchau.com/thong-bao-nghi-le-30-4-va-1-5.html"
+                                  className="plain"
+                                >
+                                  <div className="box box-default box-text-bottom box-blog-post has-hover">
+                                    <div className="box-image">
+                                      <div
+                                        className="image-cover"
+                                        style={{ paddingTop: "56.25%" }}
+                                      >
+                                        <img
+                                          loading="lazy"
+                                          decoding="async"
+                                          width="300"
+                                          height="163"
+                                          src="https://orderhangquangchau.com/wp-content/uploads/2023/04/lich-nghi-le1-30-4-06-300x163.jpg"
+                                          className="attachment-medium size-medium wp-post-image"
+                                          alt=""
+                                          srcSet="https://orderhangquangchau.com/wp-content/uploads/2023/04/lich-nghi-le1-30-4-06-300x163.jpg 300w, https://orderhangquangchau.com/wp-content/uploads/2023/04/lich-nghi-le1-30-4-06-768x419.jpg 768w, https://orderhangquangchau.com/wp-content/uploads/2023/04/lich-nghi-le1-30-4-06.jpg 1024w"
+                                          sizes="(max-width: 300px) 100vw, 300px"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className="box-text text-center">
+                                      <div className="box-text-inner blog-post-inner">
+                                        <h5 className="post-title is-large ">
+                                          Thông báo nghỉ lễ 30/4 và 1/5
+                                        </h5>
+                                        <div className="is-divider"></div>
+                                        <p className="from_the_blog_excerpt ">
+                                          Kính gửi Quý khách hàng! Order hàng
+                                          Quảng Châu xin thông báo lịch nghỉ lễ
+                                          [...]{" "}
+                                        </p>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="box-text-inner blog-post-inner">
-                                    <h5 className="post-title is-large ">
-                                      Thông báo nghỉ lễ 30/4 và 1/5
-                                    </h5>
-                                    <div className="is-divider"></div>
-                                    <p className="from_the_blog_excerpt ">
-                                      Kính gửi Quý khách hàng! Order hàng Quảng
-                                      Châu xin thông báo lịch nghỉ lễ [...]{" "}
-                                    </p>
-                                  </div>
-                                </div>
+                                </a>
                               </div>
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col post-item">
-                          <div className="col-inner">
-                            <a
-                              href="https://orderhangquangchau.com/thong-bao-lich-nghi-tet-2023.html"
-                              className="plain"
-                            >
-                              <div className="box box-default box-text-bottom box-blog-post has-hover">
-                                <div className="box-image">
-                                  <div
-                                    className="image-cover"
-                                    style={{ paddingTop: "56.25%" }}
-                                  >
-                                    <img
-                                      loading="lazy"
-                                      decoding="async"
-                                      width="300"
-                                      height="158"
-                                      src="https://orderhangquangchau.com/wp-content/uploads/2022/12/tt-nguyen-dan-2023-vao-ngay-nao-duong-lch_d559e3ef-300x158.jpg"
-                                      className="attachment-medium size-medium wp-post-image"
-                                      alt=""
-                                      srcSet="https://orderhangquangchau.com/wp-content/uploads/2022/12/tt-nguyen-dan-2023-vao-ngay-nao-duong-lch_d559e3ef-300x158.jpg 300w, https://orderhangquangchau.com/wp-content/uploads/2022/12/tt-nguyen-dan-2023-vao-ngay-nao-duong-lch_d559e3ef-1024x538.jpg 1024w, https://orderhangquangchau.com/wp-content/uploads/2022/12/tt-nguyen-dan-2023-vao-ngay-nao-duong-lch_d559e3ef-768x403.jpg 768w, https://orderhangquangchau.com/wp-content/uploads/2022/12/tt-nguyen-dan-2023-vao-ngay-nao-duong-lch_d559e3ef.jpg 1200w"
-                                      sizes="(max-width: 300px) 100vw, 300px"
-                                    />
+                            </div>
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <div className="col post-item">
+                              <div className="col-inner">
+                                <a
+                                  href="https://orderhangquangchau.com/thong-bao-lich-nghi-tet-2023.html"
+                                  className="plain"
+                                >
+                                  <div className="box box-default box-text-bottom box-blog-post has-hover">
+                                    <div className="box-image">
+                                      <div
+                                        className="image-cover"
+                                        style={{ paddingTop: "56.25%" }}
+                                      >
+                                        <img
+                                          loading="lazy"
+                                          decoding="async"
+                                          width="300"
+                                          height="158"
+                                          src="https://orderhangquangchau.com/wp-content/uploads/2022/12/tt-nguyen-dan-2023-vao-ngay-nao-duong-lch_d559e3ef-300x158.jpg"
+                                          className="attachment-medium size-medium wp-post-image"
+                                          alt=""
+                                          srcSet="https://orderhangquangchau.com/wp-content/uploads/2022/12/tt-nguyen-dan-2023-vao-ngay-nao-duong-lch_d559e3ef-300x158.jpg 300w, https://orderhangquangchau.com/wp-content/uploads/2022/12/tt-nguyen-dan-2023-vao-ngay-nao-duong-lch_d559e3ef-1024x538.jpg 1024w, https://orderhangquangchau.com/wp-content/uploads/2022/12/tt-nguyen-dan-2023-vao-ngay-nao-duong-lch_d559e3ef-768x403.jpg 768w, https://orderhangquangchau.com/wp-content/uploads/2022/12/tt-nguyen-dan-2023-vao-ngay-nao-duong-lch_d559e3ef.jpg 1200w"
+                                          sizes="(max-width: 300px) 100vw, 300px"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className="box-text text-center">
+                                      <div className="box-text-inner blog-post-inner">
+                                        <h5 className="post-title is-large ">
+                                          Thông báo lịch nghỉ tết 2023
+                                        </h5>
+                                        <div className="is-divider"></div>
+                                        <p className="from_the_blog_excerpt ">
+                                          &nbsp; Kính thưa Quý khách hàng :
+                                          Order hàng Quảng Châu xin thông báo
+                                          lịch [...]{" "}
+                                        </p>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="box-text text-center">
-                                  <div className="box-text-inner blog-post-inner">
-                                    <h5 className="post-title is-large ">
-                                      Thông báo lịch nghỉ tết 2023
-                                    </h5>
-                                    <div className="is-divider"></div>
-                                    <p className="from_the_blog_excerpt ">
-                                      &nbsp; Kính thưa Quý khách hàng : Order
-                                      hàng Quảng Châu xin thông báo lịch [...]{" "}
-                                    </p>
-                                  </div>
-                                </div>
+                                </a>
                               </div>
-                            </a>
-                          </div>
-                        </div>
-                        <div className="col post-item">
-                          <div className="col-inner">
-                            <a
-                              href="https://orderhangquangchau.com/bang-gia-ky-gui-hang.html"
-                              className="plain"
-                            >
-                              <div className="box box-default box-text-bottom box-blog-post has-hover">
-                                <div className="box-text text-center">
-                                  <div className="box-text-inner blog-post-inner">
-                                    <h5 className="post-title is-large ">
-                                      Bảng giá ký gửi hàng
-                                    </h5>
-                                    <div className="is-divider"></div>
-                                    <p className="from_the_blog_excerpt ">
-                                      BẢNG GIÁ KÝ GỬI VẬN CHUYỂN TRUNG QUỐC
-                                      &#8211; VIỆT NAM &nbsp; 1.Giá vận chuyển
-                                      [...]{" "}
-                                    </p>
+                            </div>
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <div className="col post-item">
+                              <div className="col-inner">
+                                <a
+                                  href="https://orderhangquangchau.com/thong-bao-lich-nghi-tet-am-lich-2024.html"
+                                  className="plain"
+                                >
+                                  <div className="box box-default box-text-bottom box-blog-post has-hover">
+                                    <div className="box-image">
+                                      <div
+                                        className="image-cover"
+                                        style={{ paddingTop: "56.25%" }}
+                                      >
+                                        <img
+                                          loading="lazy"
+                                          decoding="async"
+                                          width="300"
+                                          height="200"
+                                          src="https://orderhangquangchau.com/wp-content/uploads/2024/01/tet-giap-thin-300x200.jpg"
+                                          className="attachment-medium size-medium wp-post-image"
+                                          alt=""
+                                          srcSet="https://orderhangquangchau.com/wp-content/uploads/2024/01/tet-giap-thin-300x200.jpg 300w, https://orderhangquangchau.com/wp-content/uploads/2024/01/tet-giap-thin.jpg 600w"
+                                          sizes="(max-width: 300px) 100vw, 300px"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div className="box-text text-center">
+                                      <div className="box-text-inner blog-post-inner">
+                                        <h5 className="post-title is-large ">
+                                          Thông báo lịch nghỉ Tết Âm Lịch 2024
+                                        </h5>
+                                        <div className="is-divider"></div>
+                                        <p className="from_the_blog_excerpt ">
+                                          Kính gửi Quý Khách hàng! Order hàng
+                                          Quảng Châu xin thông báo lịch nghỉ tết
+                                          [...]{" "}
+                                        </p>
+                                      </div>
+                                    </div>
                                   </div>
-                                </div>
+                                </a>
                               </div>
-                            </a>
-                          </div>
-                        </div>
+                            </div>
+                          </SwiperSlide>
+                        </Swiper>
                         <button
                           className="flickity-button flickity-prev-next-button previous"
                           type="button"

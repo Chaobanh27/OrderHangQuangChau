@@ -1,6 +1,12 @@
 /* eslint-disable quotes */
+import { useEffect } from "react";
 import { IoChevronForward } from "react-icons/io5";
+import { useLocation } from "react-router-dom";
 const NewPage = () => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, [location]);
   return (
     <main id="main" className="">
       <div id="content" className="blog-wrapper blog-archive page-wrapper">
@@ -467,7 +473,14 @@ const NewPage = () => {
                 </div>
               </div>
             </div>
-            <ul className="page-numbers nav-pagination links text-center">
+            <ul
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              className="page-numbers nav-pagination links text-center"
+            >
               <li>
                 <span aria-current="page" className="page-number current">
                   1
@@ -510,6 +523,7 @@ const NewPage = () => {
               </li>
               <li>
                 <a
+                  style={{ display: "flex", alignItems: "center" }}
                   className="next page-number"
                   href="https://orderhangquangchau.com/category/tin-tuc/page/2"
                 >

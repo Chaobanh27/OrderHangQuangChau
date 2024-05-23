@@ -1,17 +1,21 @@
 /* eslint-disable quotes */
-import { useEffect, useState } from "react"
-import "../Header/index.css"
-import { IoMailOpenOutline } from "react-icons/io5"
-import { FaPhone } from "react-icons/fa6"
-import { IoChevronDownOutline } from "react-icons/io5"
-import { IoIosCart } from "react-icons/io"
-import { IoSearch } from "react-icons/io5"
+import { useEffect, useState } from "react";
+import "../Header/index.css";
+import { IoMailOpenOutline } from "react-icons/io5";
+import { FaPhone } from "react-icons/fa6";
+import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
+import { IoIosCart } from "react-icons/io";
+import { IoSearch } from "react-icons/io5";
+import { FaBars } from "react-icons/fa6";
 
-import { IoIosLock } from "react-icons/io"
-import { ImUser } from "react-icons/im"
+import { IoIosLock } from "react-icons/io";
+import { ImUser } from "react-icons/im";
+import { Link } from "react-router-dom";
 const Header = () => {
-  const [showNav, setShowNav] = useState(false)
-  const [isHovered, setIsHovered] = useState(false)
+  const [showNav, setShowNav] = useState(false);
+  // nút scrollTo
+  const [isHovered, setIsHovered] = useState(false);
+  const [code, SetCode] = useState("");
 
   const handleMouseEnter = () => setIsHovered(true)
   const handleMouseLeave = () => setIsHovered(false)
@@ -169,8 +173,8 @@ const Header = () => {
             {/* <!-- Logo --> */}
             <div id="logo" className="flex-col logo">
               {/* <!-- Header logo --> */}
-              <a
-                href="http://localhost:5173/"
+              <Link
+                to={"/"}
                 title="Order Hàng Quảng Châu &#8211; Đặt hàng nhanh chỉ 5-7 ngày Uy tín Giá rẻ"
                 rel="home"
               >
@@ -188,7 +192,7 @@ const Header = () => {
                   className="header-logo-dark"
                   alt="Order Hàng Quảng Châu &#8211; Đặt hàng nhanh chỉ 5-7 ngày Uy tín Giá rẻ"
                 />
-              </a>
+              </Link>
             </div>
 
             {/* <!-- Mobile Left Elements --> */}
@@ -201,12 +205,12 @@ const Header = () => {
                     data-pos="left"
                     data-bg="main-menu-overlay"
                     data-color=""
-                    className="is-small"
+                    className="is-small current-lightbox-clicked"
                     aria-label="Menu"
                     aria-controls="main-menu"
                     aria-expanded="false"
                   >
-                    <i className="icon-menu"></i>
+                    <FaBars style={{ fontSize: "20px" }} />
                   </a>
                 </li>
               </ul>
@@ -227,8 +231,9 @@ const Header = () => {
                   <input
                     type="text"
                     name="code"
-                    value=""
+                    value={code}
                     placeholder="Nhập mã vận đơn cần tra cứu"
+                    onChange={(e) => SetCode(e.target.value)}
                   ></input>
                   <button type="submit" id="" className="">
                     <IoSearch />
@@ -242,15 +247,11 @@ const Header = () => {
               <ul className="header-nav header-nav-main nav nav-right  nav-uppercase">
                 <li
                   id="menu-item-1169"
-                  className="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-1169 active menu-item-design-default"
+                  className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-1169 ${location.pathname == "/" ? "active" : ""} menu-item-design-default`}
                 >
-                  <a
-                    href="http://localhost:5173/"
-                    aria-current="page"
-                    className="nav-top-link"
-                  >
+                  <Link to={"/"} aria-current="page" className="nav-top-link">
                     Trang chủ
-                  </a>
+                  </Link>
                 </li>
                 <li
                   onMouseEnter={handleMouseEnter}
@@ -258,82 +259,74 @@ const Header = () => {
                   id="menu-item-1159"
                   className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1159 menu-item-design-default ${isHovered ? "current-dropdown" : ""}`}
                 >
-                  <a
-                    href="http://localhost:5173/bang-gia"
-                    className="nav-top-link"
-                  >
+                  <Link to={"/bang-gia"} className="nav-top-link">
                     Bảng giá <IoChevronDownOutline />
-                  </a>
+                  </Link>
                   <ul className="sub-menu nav-dropdown nav-dropdown-default">
                     <li
                       id="menu-item-1194"
                       className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1194"
                     >
-                      <a href="http://localhost:5173/bang-gia">
+                      <Link to={"/bang-gia"}>
                         Bảng giá dịch vụ đặt hàng Trung Quốc
-                      </a>
+                      </Link>
                     </li>
                     <li
                       id="menu-item-1195"
                       className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1195"
                     >
-                      <a href="http://localhost:5173/bang-gia-ky-gui-hang">
+                      <Link to={"/bang-gia-ky-gui-hang"}>
                         Bảng giá ký gửi vận chuyển
-                      </a>
+                      </Link>
                     </li>
                     <li
                       id="menu-item-1196"
                       className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1196"
                     >
-                      <a href="http://localhost:5173/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung">
+                      <Link
+                        to={
+                          "/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung"
+                        }
+                      >
                         Bảng giá dịch vụ chuyển tiền
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
                 <li
                   id="menu-item-1160"
-                  className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1160 menu-item-design-default"
+                  className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-1160 ${location.pathname === "/chinh-sach-bao-mat" ? "active" : ""} menu-item-design-default`}
                 >
-                  <a
-                    href="http://localhost:5173/chinh-sach-bao-mat"
-                    className="nav-top-link"
-                  >
+                  <Link to={"/chinh-sach-bao-mat"} className="nav-top-link">
                     Chính sách
-                  </a>
+                  </Link>
                 </li>
                 <li
                   id="menu-item-1161"
                   className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1161 menu-item-design-default"
                 >
-                  <a
-                    href="http://localhost:5173/huong-dan-mua-hang-tren-taobao-1688"
+                  <Link
+                    to={"/huong-dan-mua-hang-tren-taobao-1688"}
                     className="nav-top-link"
                   >
                     Hướng dẫn
-                  </a>
+                  </Link>
                 </li>
                 <li
                   id="menu-item-12"
                   className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12 menu-item-design-default"
                 >
-                  <a
-                    href="http://localhost:5173/category/tin-tuc"
-                    className="nav-top-link"
-                  >
+                  <Link to={"/category/tin-tuc"} className="nav-top-link">
                     Tin tức
-                  </a>
+                  </Link>
                 </li>
                 <li
                   id="menu-item-1168"
                   className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1168 menu-item-design-default"
                 >
-                  <a
-                    href="http://localhost:5173/tracking"
-                    className="nav-top-link"
-                  >
+                  <Link to={"/tracking"} className="nav-top-link">
                     Vận đơn
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -362,8 +355,9 @@ const Header = () => {
                     <input
                       type="text"
                       name="code"
-                      value=""
+                      value={code}
                       placeholder="Nhập mã vận đơn cần tra cứu"
+                      onChange={(e) => SetCode(e.target.value)}
                     ></input>
                     <button type="submit" id="" className="">
                       <IoSearch />
