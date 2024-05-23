@@ -1,9 +1,7 @@
-import CustomerSupport from '../../../components/CustomerSupport/CustomerSupport'
 
 const Cart = () => {
   return (
     <>
-      <CustomerSupport/>
       <div className="shoping_cart">
         <div className="col-md-12">
           <h2 className="page-title">Giỏ hàng</h2>

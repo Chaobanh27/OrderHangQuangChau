@@ -1,5 +1,4 @@
 /* eslint-disable react/no-unknown-property */
-import CustomerSupport from '../../../components/CustomerSupport/CustomerSupport'
 import { useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../../redux/user/userSlice'
 
@@ -22,7 +21,6 @@ const GeneralBoard = () => {
     }
     return (
       <>
-        <CustomerSupport/>
         <div className="col-sm-9">
           <div className="cart-by-page">
             <div className="titles">

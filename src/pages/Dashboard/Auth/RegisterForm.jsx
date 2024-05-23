@@ -43,7 +43,7 @@ const RegisterForm = () => {
 
               {/* email */}
               <div className="form-group">
-                <input type="text" className="form-control" name="email" placeholder="Email" required="" fdprocessedid="omw47m"
+                <input type="text" className="form-control" name="email" placeholder="Email" required fdprocessedid="omw47m"
                   error={!!errors['email']}
                   {...register('email', {
                     required: FIELD_REQUIRED_MESSAGE,
@@ -58,7 +58,7 @@ const RegisterForm = () => {
 
               {/* dpassword */}
               <div className="form-group">
-                <input type="password" className="form-control" name="password" placeholder="Mật khẩu" required="" fdprocessedid="e13kk7"
+                <input type="password" className="form-control" name="password" placeholder="Mật khẩu" required fdprocessedid="e13kk7"
                   error={!!errors['password']}
                   {...register('password', {
                     required: FIELD_REQUIRED_MESSAGE,
@@ -74,7 +74,7 @@ const RegisterForm = () => {
 
               {/* password_confirmation */}
               <div className="form-group">
-                <input type="password" className="form-control" name="passconf" placeholder="Nhập lại mật khẩu" required="" fdprocessedid="m6w2j"
+                <input type="password" className="form-control" name="passconf" placeholder="Nhập lại mật khẩu" required fdprocessedid="m6w2j"
                   error={!!errors['password_confirmation']}
                   {...register('password_confirmation', {
                     validate: (value) => {

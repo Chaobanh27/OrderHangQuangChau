@@ -2,8 +2,12 @@ import { Helmet } from 'react-helmet'
 import ExtraFooter from '../../components/ExtraFooter/ExtraFooter'
 import ExtraHeader from '../../components/ExtraHeader/ExtraHeader'
 import { Outlet } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectCurrentUser } from '../../redux/user/userSlice'
+import CustomerSupport from '../../components/CustomerSupport/CustomerSupport'
 
 const Dashboard = () => {
+  const user = useSelector(selectCurrentUser)
   return (
     <>
       <Helmet>
@@ -48,6 +52,7 @@ const Dashboard = () => {
         <div className="container">
           <main className="main" role="main">
             <div className="row main-row">
+              {user ? <CustomerSupport/> : null}
               <Outlet/>
             </div>
           </main>

@@ -9,9 +9,10 @@ import {
   EMAIL_RULE_MESSAGE
 } from '../../../utils/validators'
 import FieldErrorAlert from '../../../components/Form/FieldErrorAlert'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUserAPI, selectCurrentUser } from '../../../redux/user/userSlice'
+// import { login, loginUserAPI, selectCurrentUser } from '../../../redux/user/userSlice'
+import { login, selectCurrentUser } from '../../../redux/user/userSlice'
 import { useEffect } from 'react'
 
 const LoginForm = () => {
@@ -26,15 +27,23 @@ const LoginForm = () => {
     }
   }, [user, navigate])
 
+  // const submitLogIn = (data) => {
+  //   const { email, password } = data
+
+  //   toast.promise(
+  //     dispatch(loginUserAPI({ email, password })),
+  //     { pending: 'Logging in...' }
+  //   ).then(res => {
+  //     if (!res.error) navigate('/dashboard/member/profile')
+  //   })
+  // }
+
   const submitLogIn = (data) => {
     const { email, password } = data
-
-    toast.promise(
-      dispatch(loginUserAPI({ email, password })),
-      { pending: 'Logging in...' }
-    ).then(res => {
-      if (!res.error) navigate('/dashboard/member/profile')
-    })
+    dispatch(login({ email, password }))
+    const user = { email }
+    localStorage.setItem('user', JSON.stringify(user))
+    navigate('/dashboard/member/profile')
   }
 
 
@@ -74,6 +83,7 @@ const LoginForm = () => {
                     <form className="form_dangnhap" onSubmit={handleSubmit(submitLogIn)}>
                       <div className="form-group"><label htmlFor="username">Tài khoản Hoặc Email</label>
                         <input type="text" name="username" className="form-control" fdprocessedid="9awy6r"
+                          required
                           error={!!errors['email']}
                           {...register('email', {
                             required: FIELD_REQUIRED_MESSAGE,
@@ -88,6 +98,7 @@ const LoginForm = () => {
 
                       <div className="form-group"><label htmlFor="password">Mật khẩu</label>
                         <input type="password" name="password" className="form-control" fdprocessedid="lxsmtq"
+                          required
                           error={!!errors['password']}
                           {...register('password', {
                             required: FIELD_REQUIRED_MESSAGE,
