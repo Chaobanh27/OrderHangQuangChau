@@ -17,22 +17,22 @@ const Header = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [code, SetCode] = useState("");
 
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
+  const handleMouseEnter = () => setIsHovered(true)
+  const handleMouseLeave = () => setIsHovered(false)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
-        setShowNav(true);
+        setShowNav(true)
       } else {
-        setShowNav(false);
+        setShowNav(false)
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
   return (
     <header
       id="header"
@@ -66,7 +66,7 @@ const Header = () => {
                           style={{
                             fontSize: "16px",
                             color: "#fff",
-                            marginRight: "4px",
+                            marginRight: "4px"
                           }}
                         />
                         <span>orderhang89@gmail.com </span>
@@ -375,7 +375,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

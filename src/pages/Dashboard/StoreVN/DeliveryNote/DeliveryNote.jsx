@@ -1,10 +1,8 @@
-import CustomerSupport from '../../../../components/CustomerSupport/CustomerSupport'
 
 /* eslint-disable react/no-unknown-property */
 const DeliveryNote = () => {
   return (
     <>
-      <CustomerSupport/>
       <section className="content">
         <div className="row">
           <section className="content-header">

@@ -1,7 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { FaTachometerAlt, FaShoppingCart, FaBus, FaSignInAlt, FaBell, FaUserPlus, FaHospital, FaCreditCard, FaStar, FaFile, FaArchive, FaMoneyBill, FaUser } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
-import { logoutUserAPI, selectCurrentUser } from '../../redux/user/userSlice'
+// import { logoutUserAPI, selectCurrentUser } from '../../redux/user/userSlice'
+import { logout, selectCurrentUser } from '../../redux/user/userSlice'
 
 
 const ExtraHeader = () => {
@@ -9,16 +10,22 @@ const ExtraHeader = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  // const handleLogout = () => {
+  //   // Gọi API đăng xuất người dùng
+  //   dispatch(logoutUserAPI())
+  //     .then(() => {
+  //       navigate('login')
+  //     })
+  //     .catch((error) => {
+  //       // eslint-disable-next-line no-console
+  //       console.log(error)
+  //     })
+  // }
+
   const handleLogout = () => {
-    // Gọi API đăng xuất người dùng
-    dispatch(logoutUserAPI())
-      .then(() => {
-        navigate('login')
-      })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(error)
-      })
+    dispatch(logout())
+    localStorage.removeItem('user')
+    navigate('login')
   }
 
   const headerStyles = {
@@ -237,9 +244,9 @@ const ExtraHeader = () => {
         <div className="container">
           <div className="row1">
             <div className="pull-left">
-              <a className="main_logo" target="_blank" rel="noreferrer" href="http://orderhangquangchau.com">
+              <Link className="main_logo" target="_blank" rel="noreferrer" to="/">
                 <img src="https://my.orderhangquangchau.com/static/images/logo_ex.png" alt="Orderhangquangchau.com" />
-              </a>
+              </Link>
             </div>
 
             <div className="pull-right">

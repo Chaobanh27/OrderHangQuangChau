@@ -1,26 +1,27 @@
+/* eslint-disable no-console */
 /* eslint-disable quotes */
 /* eslint-disable react/no-unknown-property */
-import { useEffect, useState } from "react";
-import "../Footer/Footer.css";
-import { IoChevronUp } from "react-icons/io5";
+import { useEffect, useState } from "react"
+import "../Footer/Footer.css"
+import { IoChevronUp } from "react-icons/io5"
 
 const Footer = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 1000) {
-        setShow(true);
+        setShow(true)
       } else {
-        setShow(false);
+        setShow(false)
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
-  console.log("««««« window.scrollY »»»»»", window.scrollY);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  })
+  console.log("««««« window.scrollY »»»»»", window.scrollY)
   return (
     <footer id="footer" className="footer-wrapper">
       <section className="section" id="section_970361642">
@@ -167,7 +168,7 @@ const Footer = () => {
                     style={{
                       verticalAlign: "bottom",
                       width: "340px",
-                      height: "130px",
+                      height: "130px"
                     }}
                   >
                     <iframe
@@ -186,7 +187,7 @@ const Footer = () => {
                         border: "none",
                         visibility: "visible",
                         width: "340px",
-                        height: "130px",
+                        height: "130px"
                       }}
                       className=""
                     ></iframe>
@@ -234,7 +235,7 @@ const Footer = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
+          alignItems: "center"
         }}
         className={`back-to-top button icon invert plain fixed bottom z-1 is-outline hide-for-medium circle ${show ? "active" : ""} `}
         id="top-link"
@@ -243,7 +244,7 @@ const Footer = () => {
         <IoChevronUp />
       </a>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
