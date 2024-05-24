@@ -216,15 +216,13 @@ const Home = () => {
         </style>
       </Helmet>
       <body
-        className="home page-template page-template-page-blank page-template-page-blank-php page page-id-2 lightbox nav-dropdown-has-arrow nav-dropdown-has-shadow nav-dropdown-has-border body-scroll-lock--active" style= {{ overflow: 'hidden', position: 'fixed', top: '0px', width: '100%' }}
+        className="home page-template page-template-page-blank page-template-page-blank-php page page-id-2 lightbox nav-dropdown-has-arrow nav-dropdown-has-shadow nav-dropdown-has-border body-scroll-lock--active"
       >
         <Header />
         <Outlet />
 
         <Footer />
       </body>
-
-
     </div>
   );
 };
