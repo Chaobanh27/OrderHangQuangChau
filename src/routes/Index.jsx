@@ -1,44 +1,44 @@
 /* eslint-disable quotes */
-import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import Dashboard from "../pages/Dashboard/Dashboard";
-import RegisterForm from "../pages/Dashboard/Auth/RegisterForm";
-import LoginForm from "../pages/Dashboard/Auth/LoginForm";
-import Home from "../pages/Home/Home";
-import GeneralBoard from "../pages/Dashboard/GeneralBoard/GeneralBoard";
-import ReputableShop from "../pages/Dashboard/ReputableShop/ReputableShop";
-import AddOrders from "../pages/Dashboard/Orders/AddOrders/AddOrders";
-import ListOrders from "../pages/Dashboard/Orders/ListOrders/ListOrders";
-import PendingOrders from "../pages/Dashboard/Orders/PendingOrders/PendingOrders";
-import Orders from "../pages/Dashboard/Orders/Orders";
-import Profile from "../pages/Dashboard/Member/Profile/Profile";
-import ChangePassword from "../pages/Dashboard/Member/ChangePassword/ChangePassword";
-import Reduces from "../pages/Dashboard/Member/Reduces/Reduces";
-import Wallet from "../pages/Dashboard/Member/Wallet/Wallet";
-import DomesticShipping from "../pages/Dashboard/Member/DomesticShipping/DomesticShipping";
-import Deposit from "../pages/Dashboard/Member/Deposit/Deposit";
-import ShipOrders from "../pages/Dashboard/ShipOrders/ShipOrders";
-import ListShipOrders from "../pages/Dashboard/ShipOrders/ListShipOrders/ListShipOrders";
-import ListShipIds from "../pages/Dashboard/ShipOrders/ListShipIds/ListShipIds";
-import Ship from "../pages/Dashboard/Ship/Ship";
-import Trasnport from "../pages/Dashboard/Ship/Trasnport/Trasnport";
-import Finship from "../pages/Dashboard/Ship/Finship/Finship";
-import Cart from "../pages/Dashboard/Cart/Cart";
-import ShipOrder from "../pages/Dashboard/ShipOrders/ShipOrder/ShipOrder";
-import ResetPassword from "../pages/Dashboard/Auth/ResetPassword";
-import NotFound from "../pages/Dashboard/NotFound/NotFound";
-import DeliveryNote from "../pages/Dashboard/StoreVN/DeliveryNote/DeliveryNote";
-import ListComplains from "../pages/Dashboard/Complain/ListComplains/ListComplains";
-import ProtectedRoute from "./ProtectedRoute";
-import HomePage from "../pages/Home/HomePage/HomePage";
-import PolicyPage from "../pages/Home/PolicyPage";
-import InstructionPage from "../pages/Home/Instruction";
-import PriceList from "../pages/Home/PriceList";
-import PriceListCon from "../pages/Home/PriceListC";
-import ServiceAlipay from "../pages/Home/ServiceAlipay";
-import TrackingPage from "../pages/Home/TrackingPage";
-import NewPage from "../pages/Home/NewPage";
-import PaymentPage from "../pages/Home/PaymentPage";
+import { createBrowserRouter } from "react-router-dom"
+import App from "../App"
+import Dashboard from "../pages/Dashboard/Dashboard"
+import RegisterForm from "../pages/Dashboard/Auth/RegisterForm"
+import LoginForm from "../pages/Dashboard/Auth/LoginForm"
+import Home from "../pages/Home/Home"
+import GeneralBoard from "../pages/Dashboard/GeneralBoard/GeneralBoard"
+import ReputableShop from "../pages/Dashboard/ReputableShop/ReputableShop"
+import AddOrders from "../pages/Dashboard/Orders/AddOrders/AddOrders"
+import ListOrders from "../pages/Dashboard/Orders/ListOrders/ListOrders"
+import PendingOrders from "../pages/Dashboard/Orders/PendingOrders/PendingOrders"
+import Orders from "../pages/Dashboard/Orders/Orders"
+import Profile from "../pages/Dashboard/Member/Profile/Profile"
+import ChangePassword from "../pages/Dashboard/Member/ChangePassword/ChangePassword"
+import Reduces from "../pages/Dashboard/Member/Reduces/Reduces"
+import Wallet from "../pages/Dashboard/Member/Wallet/Wallet"
+import DomesticShipping from "../pages/Dashboard/Member/DomesticShipping/DomesticShipping"
+import Deposit from "../pages/Dashboard/Member/Deposit/Deposit"
+import ShipOrders from "../pages/Dashboard/ShipOrders/ShipOrders"
+import ListShipOrders from "../pages/Dashboard/ShipOrders/ListShipOrders/ListShipOrders"
+import ListShipIds from "../pages/Dashboard/ShipOrders/ListShipIds/ListShipIds"
+import Ship from "../pages/Dashboard/Ship/Ship"
+import Trasnport from "../pages/Dashboard/Ship/Trasnport/Trasnport"
+import Finship from "../pages/Dashboard/Ship/Finship/Finship"
+import Cart from "../pages/Dashboard/Cart/Cart"
+import ShipOrder from "../pages/Dashboard/ShipOrders/ShipOrder/ShipOrder"
+import ResetPassword from "../pages/Dashboard/Auth/ResetPassword"
+import NotFound from "../pages/Dashboard/NotFound/NotFound"
+import DeliveryNote from "../pages/Dashboard/StoreVN/DeliveryNote/DeliveryNote"
+import ListComplains from "../pages/Dashboard/Complain/ListComplains/ListComplains"
+import ProtectedRoute from "./ProtectedRoute"
+import HomePage from "../pages/Home/HomePage/HomePage"
+import PolicyPage from "../pages/Home/PolicyPage"
+import InstructionPage from "../pages/Home/Instruction"
+import PriceList from "../pages/Home/PriceList"
+import PriceListCon from "../pages/Home/PriceListC"
+import ServiceAlipay from "../pages/Home/ServiceAlipay"
+import TrackingPage from "../pages/Home/TrackingPage"
+import NewPage from "../pages/Home/NewPage"
+import PaymentPage from "../pages/Home/PaymentPage"
 
 const router = createBrowserRouter([
   {
@@ -51,42 +51,42 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            element: <HomePage />,
+            element: <HomePage />
           },
 
           {
             path: "/bang-gia",
-            element: <PriceList />,
+            element: <PriceList />
           },
           {
             path: "/category/tin-tuc",
-            element: <NewPage />,
+            element: <NewPage />
           },
           {
             path: "/bang-gia-ky-gui-hang",
-            element: <PriceListCon />,
+            element: <PriceListCon />
           },
           {
             path: "/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung",
-            element: <ServiceAlipay />,
+            element: <ServiceAlipay />
           },
           {
             path: "/chinh-sach-bao-mat",
-            element: <PolicyPage />,
+            element: <PolicyPage />
           },
           {
             path: "/huong-dan-mua-hang-tren-taobao-1688",
-            element: <InstructionPage />,
+            element: <InstructionPage />
           },
           {
             path: "/tracking",
-            element: <TrackingPage />,
+            element: <TrackingPage />
           },
           {
             path: "/dat-hang-taobao1688-tmall",
-            element: <PaymentPage />,
-          },
-        ],
+            element: <PaymentPage />
+          }
+        ]
       },
       {
         path: "dashboard",
@@ -94,27 +94,27 @@ const router = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <LoginForm />,
+            element: <LoginForm />
           },
           {
             path: "login",
-            element: <LoginForm />,
+            element: <LoginForm />
           },
           {
             path: "register",
-            element: <RegisterForm />,
+            element: <RegisterForm />
           },
           {
             path: "reset-password",
-            element: <ResetPassword />,
+            element: <ResetPassword />
           },
           {
             path: "general-board",
-            element: <GeneralBoard />,
+            element: <GeneralBoard />
           },
           {
             path: "shop",
-            element: <ReputableShop />,
+            element: <ReputableShop />
           },
           {
             element: <ProtectedRoute />,
@@ -125,17 +125,17 @@ const router = createBrowserRouter([
                 children: [
                   {
                     path: "list-orders",
-                    element: <ListOrders />,
+                    element: <ListOrders />
                   },
                   {
                     path: "add-orders",
-                    element: <AddOrders />,
+                    element: <AddOrders />
                   },
                   {
                     path: "pending-orders",
-                    element: <PendingOrders />,
-                  },
-                ],
+                    element: <PendingOrders />
+                  }
+                ]
               },
               {
                 path: "member",
@@ -143,29 +143,29 @@ const router = createBrowserRouter([
                 children: [
                   {
                     path: "profile",
-                    element: <Profile />,
+                    element: <Profile />
                   },
                   {
                     path: "change-password",
-                    element: <ChangePassword />,
+                    element: <ChangePassword />
                   },
                   {
                     path: "reduces",
-                    element: <Reduces />,
+                    element: <Reduces />
                   },
                   {
                     path: "wallet",
-                    element: <Wallet />,
+                    element: <Wallet />
                   },
                   {
                     path: "domestic-shipping",
-                    element: <DomesticShipping />,
+                    element: <DomesticShipping />
                   },
                   {
                     path: "deposit",
-                    element: <Deposit />,
-                  },
-                ],
+                    element: <Deposit />
+                  }
+                ]
               },
               {
                 path: "ship-orders",
@@ -173,17 +173,17 @@ const router = createBrowserRouter([
                 children: [
                   {
                     path: "",
-                    element: <ShipOrder />,
+                    element: <ShipOrder />
                   },
                   {
                     path: "list-ship-orders",
-                    element: <ListShipOrders />,
+                    element: <ListShipOrders />
                   },
                   {
                     path: "list-ship-ids",
-                    element: <ListShipIds />,
-                  },
-                ],
+                    element: <ListShipIds />
+                  }
+                ]
               },
               {
                 path: "ship",
@@ -191,36 +191,36 @@ const router = createBrowserRouter([
                 children: [
                   {
                     path: "transport",
-                    element: <Trasnport />,
+                    element: <Trasnport />
                   },
                   {
                     path: "finship",
-                    element: <Finship />,
-                  },
-                ],
+                    element: <Finship />
+                  }
+                ]
               },
               {
                 path: "storevn/delivery-note",
-                element: <DeliveryNote />,
+                element: <DeliveryNote />
               },
               {
                 path: "complain/list-complains",
-                element: <ListComplains />,
+                element: <ListComplains />
               },
               {
                 path: "cart",
-                element: <Cart />,
-              },
-            ],
+                element: <Cart />
+              }
+            ]
           },
           {
             path: "*",
-            element: <NotFound />,
-          },
-        ],
-      },
-    ],
-  },
-]);
+            element: <NotFound />
+          }
+        ]
+      }
+    ]
+  }
+])
 
-export default router;
+export default router

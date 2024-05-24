@@ -1,67 +1,67 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable quotes */
-import { useEffect, useRef, useState } from "react";
-import "../Header/index.css";
-import { IoMailOpenOutline } from "react-icons/io5";
-import { FaPhone } from "react-icons/fa6";
-import { IoChevronDownOutline } from "react-icons/io5";
-import { IoIosCart } from "react-icons/io";
-import { IoSearch } from "react-icons/io5";
-import { FaBars } from "react-icons/fa6";
+import { useEffect, useRef, useState } from "react"
+import "../Header/index.css"
+import { IoMailOpenOutline } from "react-icons/io5"
+import { FaPhone } from "react-icons/fa6"
+import { IoChevronDownOutline } from "react-icons/io5"
+import { IoIosCart } from "react-icons/io"
+import { IoSearch } from "react-icons/io5"
+import { FaBars } from "react-icons/fa6"
 
-import { IoIosLock } from "react-icons/io";
-import { ImUser } from "react-icons/im";
-import { Link, useNavigate } from "react-router-dom";
-import { Col, Flex, Row } from "antd";
+import { IoIosLock } from "react-icons/io"
+import { ImUser } from "react-icons/im"
+import { Link, useNavigate } from "react-router-dom"
+import { Col, Flex, Row } from "antd"
 const Header = () => {
-  const [showNav, setShowNav] = useState(false);
+  const [showNav, setShowNav] = useState(false)
   // nút scrollTo
-  const [isHovered, setIsHovered] = useState(false);
-  const [code, SetCode] = useState("");
+  const [isHovered, setIsHovered] = useState(false)
+  const [code, SetCode] = useState("")
 
   // nút navbar menu mobile
-  const [menu, SetMenu] = useState(false);
+  const [menu, SetMenu] = useState(false)
   // nút dropdown trong navbar menu mobile
-  const [dropdownMenu, SetDropDownMenu] = useState(false);
+  const [dropdownMenu, SetDropDownMenu] = useState(false)
 
   const handleMenuClose = () => {
-    SetMenu(false);
-  };
+    SetMenu(false)
+  }
 
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
-  const navigation = useNavigate();
+  const handleMouseEnter = () => setIsHovered(true)
+  const handleMouseLeave = () => setIsHovered(false)
+  const navigation = useNavigate()
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
-        setShowNav(true);
+        setShowNav(true)
       } else {
-        setShowNav(false);
+        setShowNav(false)
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
   // click outside of menu mobile
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          handleMenuClose();
+          handleMenuClose()
         }
       }
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside)
       return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
+        document.removeEventListener("mousedown", handleClickOutside)
+      }
+    }, [ref])
   }
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  const wrapperRef = useRef(null)
+  useOutsideAlerter(wrapperRef)
 
   return (
     <>
@@ -178,7 +178,7 @@ const Header = () => {
                                 <IoMailOpenOutline
                                   style={{
                                     fontSize: "16px",
-                                    marginRight: "4px",
+                                    marginRight: "4px"
                                   }}
                                 />
                                 <span>orderhang89@gmail.com </span>
@@ -193,7 +193,7 @@ const Header = () => {
                                 <FaPhone
                                   style={{
                                     marginRight: "8px",
-                                    fontSize: "12px",
+                                    fontSize: "12px"
                                   }}
                                 />
                                 <span>0971.243.666</span>
@@ -212,7 +212,7 @@ const Header = () => {
                                 <ImUser
                                   style={{
                                     fontSize: "16px",
-                                    marginRight: "4px",
+                                    marginRight: "4px"
                                   }}
                                 />{" "}
                                 Đăng ký
@@ -227,7 +227,7 @@ const Header = () => {
                                 <IoIosLock
                                   style={{
                                     fontSize: "16px",
-                                    marginRight: "4px",
+                                    marginRight: "4px"
                                   }}
                                 />{" "}
                                 Đăng nhập
@@ -242,7 +242,7 @@ const Header = () => {
                                 <IoIosCart
                                   style={{
                                     fontSize: "16px",
-                                    marginRight: "4px",
+                                    marginRight: "4px"
                                   }}
                                 />{" "}
                                 Giỏ hàng
@@ -322,7 +322,7 @@ const Header = () => {
                             style={{
                               fontSize: "16px",
                               color: "#fff",
-                              marginRight: "4px",
+                              marginRight: "4px"
                             }}
                           />
                           <span>orderhang89@gmail.com </span>
@@ -641,7 +641,7 @@ const Header = () => {
         </div>
       </header>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

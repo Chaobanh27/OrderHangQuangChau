@@ -23,7 +23,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('member/profile')
+      navigate('/dashboard/member/profile')
     }
   }, [user, navigate])
 
