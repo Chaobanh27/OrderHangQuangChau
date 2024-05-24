@@ -328,7 +328,7 @@ const ExtraHeader = () => {
 
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
                   <FaCreditCard style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
-                  <Link target="_blank" rel="noreferrer" to="/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung">Thông tin thanh toán</Link>
+                  <Link target="_blank" rel="noreferrer" to="/dat-hang-taobao1688-tmall">Thông tin thanh toán</Link>
                 </li>
                 <li className="dropdown" style={{ display: 'flex', alignItems: 'center' }}>
                   <FaStar style={{ color: 'white', fontSize: '20px', marginRight: '2px' }}/>
