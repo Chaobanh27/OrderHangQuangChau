@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable quotes */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../Header/index.css";
 import { IoMailOpenOutline } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa6";
@@ -46,6 +46,23 @@ const Header = () => {
     };
   }, []);
 
+  // click outside of menu mobile
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          handleMenuClose();
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
   return (
     <>
       <div style={{ display: `${menu ? "block" : "none"}` }}>
@@ -61,7 +78,7 @@ const Header = () => {
               style={{ top: "0px", position: "absolute", height: "667px" }}
             >
               <div className="mfp-container mfp-s-ready mfp-inline-holder">
-                <div className="mfp-content">
+                <div ref={wrapperRef} className="mfp-content">
                   <div id="main-menu" className="mobile-sidebar no-scrollbar">
                     <div className="sidebar-menu no-scrollbar ">
                       <ul
