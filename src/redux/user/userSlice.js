@@ -58,7 +58,7 @@ export const userSlice = createSlice({
     login: (state, action) => {
       const { email, password } = action.payload
       // Thực hiện xác thực người dùng (ví dụ: kiểm tra email và password)
-      if (email === 'chaobanhnguyen@gmail.com' && password === 'Javascript1996') {
+      if (email === 'client@gmail.com' && password === 'Javascript1996') {
         toast.success('Đăng nhập thành công')
         state.currentUser = { email }
         localStorage.setItem('user', JSON.stringify(state.currentUser))
