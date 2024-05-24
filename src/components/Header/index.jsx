@@ -1,26 +1,36 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable quotes */
-import { useEffect, useState } from "react"
-import "../Header/index.css"
-import { IoMailOpenOutline } from "react-icons/io5"
-import { FaPhone } from "react-icons/fa6"
-import { IoChevronDownOutline } from "react-icons/io5"
-import { IoIosCart } from "react-icons/io"
-import { IoSearch } from "react-icons/io5"
-import { FaBars } from "react-icons/fa6"
+import { useEffect, useRef, useState } from "react";
+import "../Header/index.css";
+import { IoMailOpenOutline } from "react-icons/io5";
+import { FaPhone } from "react-icons/fa6";
+import { IoChevronDownOutline } from "react-icons/io5";
+import { IoIosCart } from "react-icons/io";
+import { IoSearch } from "react-icons/io5";
+import { FaBars } from "react-icons/fa6";
 
-import { IoIosLock } from "react-icons/io"
-import { ImUser } from "react-icons/im"
-import { Link, useNavigate } from "react-router-dom"
+import { IoIosLock } from "react-icons/io";
+import { ImUser } from "react-icons/im";
+import { Link, useNavigate } from "react-router-dom";
+import { Col, Flex, Row } from "antd";
 const Header = () => {
-  const [showNav, setShowNav] = useState(false)
+  const [showNav, setShowNav] = useState(false);
   // nút scrollTo
-  const [isHovered, setIsHovered] = useState(false)
-  const [code, SetCode] = useState("")
+  const [isHovered, setIsHovered] = useState(false);
+  const [code, SetCode] = useState("");
+
+  // nút navbar menu mobile
+  const [menu, SetMenu] = useState(false);
+  // nút dropdown trong navbar menu mobile
+  const [dropdownMenu, SetDropDownMenu] = useState(false);
+
+  const handleMenuClose = () => {
+    SetMenu(false);
+  };
 
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
-  const navigation = useNavigate()
+  const navigation = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
@@ -35,55 +45,251 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // click outside of menu mobile
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          handleMenuClose();
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
   return (
     <>
-      <div class="mfp-bg off-canvas off-canvas-left main-menu-overlay mfp-ready" style= {{ height: '6294px', position: 'absolute' }}></div>
-      <div className="mfp-wrap mfp-auto-cursor off-canvas off-canvas-left mfp-ready" tabindex="-1" style= {{ top: '0px', position: 'absolute', height: '667px' }}>
-        <div className="mfp-container mfp-s-ready mfp-inline-holder">
-          <div className="mfp-content">
-            <div id="main-menu" className="mobile-sidebar no-scrollbar">
-              <div className="sidebar-menu no-scrollbar ">
-                <ul className="nav nav-sidebar nav-vertical nav-uppercase" data-tab="1">
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-1169"><a href="https://orderhangquangchau.com/" aria-current="page">Trang chủ</a></li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1159 has-child" aria-expanded="false"><a href="https://orderhangquangchau.com/bang-gia">Bảng giá</a>
-                    <button className="toggle" aria-label="Toggle" fdprocessedid="cmn95k"><i className="icon-angle-down"></i></button><ul className="sub-menu nav-sidebar-ul children">
-                      <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1194"><a href="https://orderhangquangchau.com/bang-gia">Bảng giá dịch vụ đặt hàng Trung Quốc</a></li>
-                      <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1195"><a href="https://orderhangquangchau.com/bang-gia-ky-gui-hang.html">Bảng giá ký gửi vận chuyển</a></li>
-                      <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1196"><a href="https://orderhangquangchau.com/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung.html">Bảng giá dịch vụ chuyển tiền</a></li>
-                    </ul>
-                  </li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1160"><a href="https://orderhangquangchau.com/chinh-sach-bao-mat">Chính sách</a></li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1161"><a href="https://orderhangquangchau.com/huong-dan-mua-hang-tren-taobao-1688">Hướng dẫn</a></li>
-                  <li className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12"><a href="https://orderhangquangchau.com/category/tin-tuc">Tin tức</a></li>
-                  <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1168"><a href="https://orderhangquangchau.com/tracking">Vận đơn</a></li>
-                  <li className="header-contact-wrapper">
-                    <ul id="header-contact" className="nav nav-divided nav-uppercase header-contact">
-                      <li className="">
-                        <a href="mailto:orderhang89@gmail.com" className="tooltip" title="orderhang89@gmail.com">
-                          <i className="icon-envelop" style= {{ fontSize: '16px' }}></i>			       <span>
-             orderhang89@gmail.com			       </span>
-                        </a>
-                      </li>
-                      <li className="">
-                        <a href="tel:0971.243.666" className="tooltip" title="0971.243.666">
-                          <i className="icon-phone" style= {{ fontSize: '16px' }}></i>			      <span>0971.243.666</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li><li className="html custom html_topbar_left"><ul className="account-menu">
-                    <li><a target="_blank" rel="noreferrer" href="http://my.orderhangquangchau.com/register"><i className="icon-user"></i> Đăng ký</a></li>
-                    <li><a target="_blank" rel="noreferrer" href="http://my.orderhangquangchau.com/login"><i className="icon-lock"></i> Đăng nhập</a></li>
-                    <li><a target="_blank" rel="noreferrer"href="https://my.orderhangquangchau.com/cart"><i className="icon-shopping-cart"></i> Giỏ hàng</a></li>
-                  </ul>
-                  </li><li className="html custom html_topbar_right"><img width="30" src="/wp-content/uploads/tien-te.png" />
-                Tỉ giá: : 3625</li>
-                </ul>
-
+      <div style={{ display: `${menu ? "block" : "none"}` }}>
+        <Row>
+          <Col xs={24} sm={24} md={24} lg={0}>
+            <div
+              class="mfp-bg off-canvas off-canvas-left main-menu-overlay mfp-ready"
+              style={{ height: "6294px", position: "absolute" }}
+            ></div>
+            <div
+              className="mfp-wrap mfp-auto-cursor off-canvas off-canvas-left mfp-ready"
+              tabindex="-1"
+              style={{ top: "0px", position: "absolute", height: "667px" }}
+            >
+              <div className="mfp-container mfp-s-ready mfp-inline-holder">
+                <div ref={wrapperRef} className="mfp-content">
+                  <div id="main-menu" className="mobile-sidebar no-scrollbar">
+                    <div className="sidebar-menu no-scrollbar ">
+                      <ul
+                        className="nav nav-sidebar nav-vertical nav-uppercase"
+                        data-tab="1"
+                      >
+                        <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-1169">
+                          <Link
+                            onClick={handleMenuClose}
+                            to={"/"}
+                            aria-current="page"
+                          >
+                            Trang chủ
+                          </Link>
+                        </li>
+                        <li
+                          onClick={() => SetDropDownMenu(!dropdownMenu)}
+                          className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1159 has-child ${dropdownMenu ? "active " : ""}`}
+                          aria-expanded="false"
+                        >
+                          <Link to={"/bang-gia"}>Bảng giá</Link>
+                          <button
+                            className="toggle"
+                            aria-label="Toggle"
+                            fdprocessedid="cmn95k"
+                          >
+                            <IoChevronDownOutline
+                              style={{ fontSize: "20px" }}
+                            />
+                          </button>
+                          <ul className="sub-menu nav-sidebar-ul children">
+                            <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1194">
+                              <Link onClick={handleMenuClose} to={"/bang-gia"}>
+                                Bảng giá dịch vụ đặt hàng Trung Quốc
+                              </Link>
+                            </li>
+                            <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1195">
+                              <Link
+                                onClick={handleMenuClose}
+                                to={"/bang-gia-ky-gui-hang"}
+                              >
+                                Bảng giá ký gửi vận chuyển
+                              </Link>
+                            </li>
+                            <li className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1196">
+                              <Link
+                                onClick={handleMenuClose}
+                                to={
+                                  "/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung"
+                                }
+                              >
+                                Bảng giá dịch vụ chuyển tiền
+                              </Link>
+                            </li>
+                          </ul>
+                        </li>
+                        <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1160">
+                          <Link
+                            onClick={handleMenuClose}
+                            to={"/chinh-sach-bao-mat"}
+                          >
+                            Chính sách
+                          </Link>
+                        </li>
+                        <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1161">
+                          <Link
+                            to={"/huong-dan-mua-hang-tren-taobao-1688"}
+                            onClick={handleMenuClose}
+                          >
+                            Hướng dẫn
+                          </Link>
+                        </li>
+                        <li className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12">
+                          <Link
+                            to={"/category/tin-tuc"}
+                            onClick={handleMenuClose}
+                          >
+                            Tin tức
+                          </Link>
+                        </li>
+                        <li className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1168">
+                          <Link to={"/tracking"} onClick={handleMenuClose}>
+                            Vận đơn
+                          </Link>
+                        </li>
+                        <li className="header-contact-wrapper">
+                          <ul
+                            id="header-contact"
+                            className="nav nav-divided nav-uppercase header-contact"
+                          >
+                            <li className="">
+                              <a
+                                href="mailto:orderhang89@gmail.com"
+                                className="tooltip"
+                                title="orderhang89@gmail.com"
+                              >
+                                <IoMailOpenOutline
+                                  style={{
+                                    fontSize: "16px",
+                                    marginRight: "4px",
+                                  }}
+                                />
+                                <span>orderhang89@gmail.com </span>
+                              </a>
+                            </li>
+                            <li className="">
+                              <a
+                                href="tel:0971.243.666"
+                                className="tooltip"
+                                title="0971.243.666"
+                              >
+                                <FaPhone
+                                  style={{
+                                    marginRight: "8px",
+                                    fontSize: "12px",
+                                  }}
+                                />
+                                <span>0971.243.666</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li className="html custom html_topbar_left">
+                          <ul className="account-menu">
+                            <li>
+                              <Link
+                                to={"/dashboard/register"}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                <ImUser
+                                  style={{
+                                    fontSize: "16px",
+                                    marginRight: "4px",
+                                  }}
+                                />{" "}
+                                Đăng ký
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                to={"/dashboard/login"}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                <IoIosLock
+                                  style={{
+                                    fontSize: "16px",
+                                    marginRight: "4px",
+                                  }}
+                                />{" "}
+                                Đăng nhập
+                              </Link>
+                            </li>
+                            <li>
+                              <Link
+                                to={"/dashboard/cart"}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                <IoIosCart
+                                  style={{
+                                    fontSize: "16px",
+                                    marginRight: "4px",
+                                  }}
+                                />{" "}
+                                Giỏ hàng
+                              </Link>
+                            </li>
+                          </ul>
+                        </li>
+                        <li className="html custom html_topbar_right">
+                          <img
+                            width="30"
+                            src="https://orderhangquangchau.com/wp-content/uploads/tien-te.png"
+                          />
+                          Tỉ giá: : 3625
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="mfp-preloader">Loading...</div>
               </div>
-
-
-            </div></div><div className="mfp-preloader">Loading...</div></div><button title="Close (Esc)" type="button" className="mfp-close"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+              <button
+                onClick={() => SetMenu(!menu)}
+                title="Close (Esc)"
+                type="button"
+                className="mfp-close"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-x"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </Col>
+        </Row>
       </div>
+
       <header
         id="header"
         className={`header has-sticky sticky-jump ${showNav ? "show" : ""}`}
@@ -99,7 +305,7 @@ const Header = () => {
                       style={{ marginRight: "4px" }}
                       src="https://orderhangquangchau.com/wp-content/uploads/tien-te.png"
                     ></img>
-                  Tỉ giá: : 3620
+                    Tỉ giá: : 3620
                   </li>
                   <li className="header-contact-wrapper">
                     <ul
@@ -116,7 +322,7 @@ const Header = () => {
                             style={{
                               fontSize: "16px",
                               color: "#fff",
-                              marginRight: "4px"
+                              marginRight: "4px",
                             }}
                           />
                           <span>orderhang89@gmail.com </span>
@@ -147,31 +353,31 @@ const Header = () => {
                   <li className="html custom html_topbar_left">
                     <ul className="account-menu">
                       <li>
-                        <a
+                        <Link
+                          to={"/dashboard/register"}
                           target="_blank"
-                          href="http://localhost:5173/dashboard/register"
                           rel="noreferrer"
                         >
                           <ImUser /> Đăng ký
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
+                          to={"/dashboard/login"}
                           target="_blank"
-                          href="http://localhost:5173/dashboard/login"
                           rel="noreferrer"
                         >
                           <IoIosLock /> Đăng nhập
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
+                          to={"/dashboard/cart"}
                           target="_blank"
-                          href="http://localhost:5173/dashboard/cart"
                           rel="noreferrer"
                         >
                           <IoIosCart /> Giỏ hàng
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </li>
@@ -183,31 +389,31 @@ const Header = () => {
                   <li className="html custom html_topbar_left">
                     <ul className="account-menu">
                       <li>
-                        <a
+                        <Link
+                          to={"/dashboard/register"}
                           target="_blank"
-                          href="http://localhost:5173/dashboard/register"
                           rel="noreferrer"
                         >
                           <ImUser /> Đăng ký
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
+                          to={"/dashboard/login"}
                           target="_blank"
-                          href="http://localhost:5173/dashboard/login"
                           rel="noreferrer"
                         >
                           <IoIosLock /> Đăng nhập
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a
+                        <Link
+                          to={"/dashboard/cart"}
                           target="_blank"
-                          href="http://localhost:5173/dashboard/cart"
                           rel="noreferrer"
                         >
                           <IoIosCart /> Giỏ hàng
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </li>
@@ -260,7 +466,10 @@ const Header = () => {
                       aria-controls="main-menu"
                       aria-expanded="false"
                     >
-                      <FaBars style={{ fontSize: "20px" }} />
+                      <FaBars
+                        onClick={() => SetMenu(!menu)}
+                        style={{ fontSize: "20px" }}
+                      />
                     </a>
                   </li>
                 </ul>
@@ -272,12 +481,7 @@ const Header = () => {
           flex-grow"
               >
                 <div className="search_auto ">
-                  <form
-                    action="/tracking"
-                    method="post"
-                    className="header_form_tracking"
-                    id=""
-                  >
+                  <Flex>
                     <input
                       type="text"
                       name="code"
@@ -285,10 +489,16 @@ const Header = () => {
                       placeholder="Nhập mã vận đơn cần tra cứu"
                       onChange={(e) => SetCode(e.target.value)}
                     ></input>
-                    <button type="submit" id="" className="">
-                      <IoSearch />
+                    <button
+                      style={{ background: "#284386" }}
+                      type="submit"
+                      id=""
+                      className=""
+                      onClick={() => navigation("/tracking")}
+                    >
+                      <IoSearch style={{ color: "#fff" }} />
                     </button>
-                  </form>
+                  </Flex>
                 </div>
               </div>
 
@@ -300,17 +510,17 @@ const Header = () => {
                     className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-1169 ${location.pathname == "/" ? "active" : ""} menu-item-design-default`}
                   >
                     <Link to={"/"} aria-current="page" className="nav-top-link">
-                    Trang chủ
+                      Trang chủ
                     </Link>
                   </li>
                   <li
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     id="menu-item-1159"
-                    className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1159 menu-item-design-default ${isHovered ? "current-dropdown" : ""}`}
+                    className={`     ${location.pathname == "/bang-gia" || location.pathname === "/bang-gia-ky-gui-hang" || location.pathname === "/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung" ? "active" : ""} menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1159 menu-item-design-default ${isHovered ? "current-dropdown" : ""}`}
                   >
                     <Link to={"/bang-gia"} className="nav-top-link">
-                    Bảng giá <IoChevronDownOutline />
+                      Bảng giá <IoChevronDownOutline />
                     </Link>
                     <ul className="sub-menu nav-dropdown nav-dropdown-default">
                       <li
@@ -318,7 +528,7 @@ const Header = () => {
                         className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1194"
                       >
                         <Link to={"/bang-gia"}>
-                        Bảng giá dịch vụ đặt hàng Trung Quốc
+                          Bảng giá dịch vụ đặt hàng Trung Quốc
                         </Link>
                       </li>
                       <li
@@ -326,7 +536,7 @@ const Header = () => {
                         className="menu-item menu-item-type-custom menu-item-object-custom menu-item-1195"
                       >
                         <Link to={"/bang-gia-ky-gui-hang"}>
-                        Bảng giá ký gửi vận chuyển
+                          Bảng giá ký gửi vận chuyển
                         </Link>
                       </li>
                       <li
@@ -338,7 +548,7 @@ const Header = () => {
                             "/dich-vu-nap-tien-alipay-thanh-toan-tien-trung-quoc-chuyen-tien-trung"
                           }
                         >
-                        Bảng giá dịch vụ chuyển tiền
+                          Bảng giá dịch vụ chuyển tiền
                         </Link>
                       </li>
                     </ul>
@@ -348,34 +558,38 @@ const Header = () => {
                     className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-1160 ${location.pathname === "/chinh-sach-bao-mat" ? "active" : ""} menu-item-design-default`}
                   >
                     <Link to={"/chinh-sach-bao-mat"} className="nav-top-link">
-                    Chính sách
+                      Chính sách
                     </Link>
                   </li>
                   <li
                     id="menu-item-1161"
-                    className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1161 menu-item-design-default"
+                    className={`  ${location.pathname === "/huong-dan-mua-hang-tren-taobao-1688" ? "active" : ""} menu-item menu-item-type-post_type menu-item-object-page menu-item-1161 menu-item-design-default`}
                   >
                     <Link
                       to={"/huong-dan-mua-hang-tren-taobao-1688"}
                       className="nav-top-link"
                     >
-                    Hướng dẫn
+                      Hướng dẫn
                     </Link>
                   </li>
                   <li
                     id="menu-item-12"
-                    className="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12 menu-item-design-default"
+                    className={`menu-item menu-item-type-taxonomy menu-item-object-category menu-item-12 menu-item-design-default
+                    ${location.pathname === "/category/tin-tuc" ? "active" : ""}
+                    `}
                   >
                     <Link to={"/category/tin-tuc"} className="nav-top-link">
-                    Tin tức
+                      Tin tức
                     </Link>
                   </li>
                   <li
                     id="menu-item-1168"
-                    className="menu-item menu-item-type-post_type menu-item-object-page menu-item-1168 menu-item-design-default"
+                    className={`menu-item menu-item-type-post_type menu-item-object-page menu-item-1168 menu-item-design-default
+                    ${location.pathname === "/tracking" ? "active" : ""}
+                    `}
                   >
                     <Link to={"/tracking"} className="nav-top-link">
-                    Vận đơn
+                      Vận đơn
                     </Link>
                   </li>
                 </ul>
@@ -396,12 +610,7 @@ const Header = () => {
               <div className="flex-col show-for-medium flex-grow">
                 <ul className="nav header-bottom-nav nav-center mobile-nav  nav-uppercase">
                   <div className="search_auto ">
-                    <form
-                      action="/tracking"
-                      method="post"
-                      className="header_form_tracking"
-                      id=""
-                    >
+                    <Flex>
                       <input
                         type="text"
                         name="code"
@@ -409,10 +618,16 @@ const Header = () => {
                         placeholder="Nhập mã vận đơn cần tra cứu"
                         onChange={(e) => SetCode(e.target.value)}
                       ></input>
-                      <button type="submit" id="" className="">
-                        <IoSearch />
+                      <button
+                        style={{ background: "#284386" }}
+                        type="submit"
+                        id=""
+                        className=""
+                        onClick={() => navigation("/tracking")}
+                      >
+                        <IoSearch style={{ color: "#fff" }} />
                       </button>
-                    </form>
+                    </Flex>
                   </div>
                 </ul>
               </div>
@@ -426,8 +641,7 @@ const Header = () => {
         </div>
       </header>
     </>
-
-  )
-}
+  );
+};
 
 export default Header;
